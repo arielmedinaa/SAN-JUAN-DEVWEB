@@ -1,11 +1,11 @@
 import { useState } from "react";
-import "./App.css";
+
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import Confetti from "react-confetti";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import "./style.css";
 function App() {
   const [score, setscore] = useState(0);
   const [showCOnfetti, setShowCOnfetti] = useState(false);
@@ -35,7 +35,7 @@ function App() {
         { correct: false, res: "mbeju, chipa,mandioca" },
         { correct: false, res: "mbeju,asado,chicharo" },
         { correct: false, res: "mbeju,guiso,sushi" },
-        { correct: true, res: "mbeju, pastel mandi'o, chicaro trensado" },
+        { correct: true, res: "mbeju, pastel mandi'o, chicharo trensado" },
       ],
     },
     {
@@ -70,6 +70,10 @@ function App() {
     },
   ];
   const checkAnswen = () => {
+    if (answers.length === 0) {
+      toast.info("Seleccione una opcion 💢 😠  ");
+      return;
+    }
     const correctAnswer = answers?.map((ans) => {
       return questions
         .find((q) => q.question === ans.question)
@@ -82,7 +86,7 @@ function App() {
       setShowCOnfetti(true);
       toast.success("¡Felicidades ganaste! 🥳 :");
     } else {
-      toast.warn("Lo siento no ganaste 😢 :");
+      toast.info("Lo siento no ganaste 😢");
     }
   };
   const handleClick = ({ target: { checked, value, name } }) => {
@@ -99,60 +103,93 @@ function App() {
   const width = screen.width;
   const height = screen.height;
   return (
-    <Container>
+    <div>
       <ToastContainer />
-      <Row>
-        <Col xs={12} md={3}>
-          <h5>
-            Respuesta Correctas: {score}/{questions.length}
-          </h5>
-        </Col>
-        <Col></Col>
-      </Row>
-      <Row>
+      <h5 style={{ color: "#fff", fontSize: "1.5rem", textAlign: "center" }}>
+        Respuesta Correctas: {score}/{questions.length}
+      </h5>
+      <div className="sectionprincipal">
         {questions.map((q, ind) => (
-          <Col key={ind} xs={12} md={6}>
-            <Card className="mt-2 mb-2">
-              <Card.Body>
-                <Card.Title>
-                  {ind + 1}. {q.question}
-                </Card.Title>
-                <Card.Text>
-                  {q.resulst.map((res, rind) => (
-                    <div key={rind}>
-                      <input
-                        onChange={handleClick}
-                        type="radio"
-                        id={res.res}
-                        name={q.question}
-                        value={res.res}
-                      />
-                      <label htmlFor={res.res}>{res.res}</label>
-                      <br />
-                    </div>
-                  ))}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
+          <div key={ind} className="cardGeneral">
+            <h1>
+              {" "}
+              {ind + 1}. {q.question}
+            </h1>
+            {q.resulst.map((res, rind) => (
+              <div key={rind}>
+                <input
+                  onChange={handleClick}
+                  type="radio"
+                  id={res.res}
+                  name={q.question}
+                  value={res.res}
+                />
+                <label htmlFor={res.res}>{res.res}</label>
+                <br />
+              </div>
+            ))}
+          </div>
         ))}
-      </Row>
-      <Row colspan={2}>
-        <Col xs={12} md={6}>
-          <Button
-            variant="success"
-            onClick={() => checkAnswen()}
-            className="m-1"
-          >
-            Verificar
-          </Button>
-          <Button variant="primary" onClick={() => window.location.reload()}>
-            Reiniciar
-          </Button>
-        </Col>
-      </Row>
+        <footer>
+          <p>DESARROLLO WEB STARSOFT -(EDGAR, RYJAR, MAURO, PABLO, JESUS) </p>
+        </footer>
+        <div className="butons">
+          <button onClick={() => checkAnswen()}>Verificar</button>
+          <button onClick={() => window.location.reload()}>Reiniciar</button>
+        </div>
+      </div>
+
       {showCOnfetti && <Confetti width={width} height={height} />}
-    </Container>
+
+      {/* 
+      <Container>
+        <Row>
+          <Col></Col>
+        </Row>
+        <Row>
+          {questions.map((q, ind) => (
+            <Col key={ind} xs={12} md={6}>
+              <Card className="mt-2 mb-2">
+                <Card.Body>
+                  <Card.Title>
+                    {ind + 1}. {q.question}
+                  </Card.Title>
+                  <Card.Text>
+                    {q.resulst.map((res, rind) => (
+                      <div key={rind}>
+                        <input
+                          onChange={handleClick}
+                          type="radio"
+                          id={res.res}
+                          name={q.question}
+                          value={res.res}
+                        />
+                        <label htmlFor={res.res}>{res.res}</label>
+                        <br />
+                      </div>
+                    ))}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        <Row colspan={2}>
+          <Col xs={12} md={6}>
+            <Button
+              variant="success"
+              onClick={() => checkAnswen()}
+              className="m-1"
+            >
+              Verificar
+            </Button>
+            <Button variant="primary" onClick={() => window.location.reload()}>
+              Reiniciar
+            </Button>
+          </Col>
+        </Row>
+      </Container> */}
+    </div>
   );
 }
 
