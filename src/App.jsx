@@ -54,8 +54,8 @@ function App() {
       question: "Quienes asisten al San juan",
       resulst: [
         { correct: false, res: "Personas Felices" },
-        { correct: false, res: "Gente que quiere compartir" },
-        { correct: true, res: "Kamba" },
+        { correct: true, res: "Gente que quiere compartir" },
+        { correct: false, res: "Kamba" },
         { correct: false, res: "Tierra Adentro" },
       ],
     },
@@ -85,6 +85,13 @@ function App() {
     if (cantidad === questions.length) {
       setShowCOnfetti(true);
       toast.success("¡Felicidades ganaste! 🥳 :");
+
+      setTimeout(() => {
+        const footer = document.getElementById("header");
+        if (footer) {
+          footer.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 500);
     } else {
       toast.info("Lo siento no ganaste 😢");
     }
@@ -108,7 +115,7 @@ function App() {
       <h5 style={{ color: "#fff", fontSize: "1.5rem", textAlign: "center" }}>
         Respuesta Correctas: {score}/{questions.length}
       </h5>
-      <div className="sectionprincipal">
+      <div id="header" className="sectionprincipal">
         {questions.map((q, ind) => (
           <div key={ind} className="cardGeneral">
             <h1>
