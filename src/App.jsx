@@ -3,6 +3,8 @@ import "./App.css";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Confetti from "react-confetti";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [score, setscore] = useState(0);
@@ -19,7 +21,7 @@ function App() {
       ],
     },
     {
-      question: "¿En Honor a quien se celebra el san juan?",
+      question: "¿En honor a quien se celebra el San Juan?",
       resulst: [
         { correct: true, res: "San Juan Bautista" },
         { correct: false, res: "San Juan Nepomunseno" },
@@ -28,12 +30,42 @@ function App() {
       ],
     },
     {
-      question: "Comidas tipias",
+      question: "Comidas tipicas",
       resulst: [
         { correct: false, res: "mbeju, chipa,mandioca" },
         { correct: false, res: "mbeju,asado,chicharo" },
         { correct: false, res: "mbeju,guiso,sushi" },
         { correct: true, res: "mbeju, pastel mandi'o, chicaro trensado" },
+      ],
+    },
+    {
+      question: "Que juegos son del San Juan",
+      resulst: [
+        { correct: false, res: "Toro mecanico" },
+        { correct: false, res: "fifa en juego de play 5" },
+        { correct: false, res: "lamida de chipa" },
+        {
+          correct: true,
+          res: "pelota de trapo en llamas,carrera de homosapiens en bolsas,palos resvaladisos",
+        },
+      ],
+    },
+    {
+      question: "Quienes asisten al San juan",
+      resulst: [
+        { correct: false, res: "Personas Felices" },
+        { correct: false, res: "Gente que quiere compartir" },
+        { correct: true, res: "Kamba" },
+        { correct: false, res: "Tierra Adentro" },
+      ],
+    },
+    {
+      question: "Que stand Gana Hoy?",
+      resulst: [
+        { correct: false, res: "Administracion" },
+        { correct: false, res: "Soporte" },
+        { correct: true, res: "Desarrollo Web" },
+        { correct: false, res: "Actualizaciones" },
       ],
     },
   ];
@@ -46,26 +78,34 @@ function App() {
 
     const cantidad = correctAnswer?.filter((res) => res.correct).length;
     setscore(cantidad);
-    if (cantidad === 10) {
+    if (cantidad === questions.length) {
       setShowCOnfetti(true);
+      toast.success("¡Felicidades ganaste! 🥳 :");
+    } else {
+      toast.warn("Lo siento no ganaste 😢 :");
     }
   };
   const handleClick = ({ target: { checked, value, name } }) => {
-    if (!answers.find((r) => r.question === name)) {
-      setAnswers([
-        ...answers,
-        { question: name, correct: checked, res: value },
-      ]);
+    const finindex = answers.findIndex((r) => r.question === name);
+    if (finindex !== -1) {
+      const answ = structuredClone(answers);
+      answ[finindex] = { question: name, correct: checked, res: value };
+      setAnswers(answ);
+      return;
     }
+    setAnswers([...answers, { question: name, correct: checked, res: value }]);
   };
 
   const width = screen.width;
   const height = screen.height;
   return (
     <Container>
+      <ToastContainer />
       <Row>
         <Col xs={12} md={3}>
-          <h5>Respuesta Correctas: {score}/10</h5>
+          <h5>
+            Respuesta Correctas: {score}/{questions.length}
+          </h5>
         </Col>
         <Col></Col>
       </Row>
@@ -99,7 +139,11 @@ function App() {
       </Row>
       <Row colspan={2}>
         <Col xs={12} md={6}>
-          <Button variant="success" onClick={() => checkAnswen()}>
+          <Button
+            variant="success"
+            onClick={() => checkAnswen()}
+            className="m-1"
+          >
             Verificar
           </Button>
           <Button variant="primary" onClick={() => window.location.reload()}>
