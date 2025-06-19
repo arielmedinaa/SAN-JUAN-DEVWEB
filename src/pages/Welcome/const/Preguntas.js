@@ -45,7 +45,7 @@ export const questions = [
           "Mbokapu",
           "Yvyra syi",
         ],
-        answer: "Carrera de embolsados",
+        answer: "Carrera bosa",
       },
       {
         question:
