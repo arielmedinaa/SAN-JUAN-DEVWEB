@@ -83,7 +83,6 @@ $white-shadow: rgba(255, 255, 255, 0.8);
     0 8px 16px rgba(0, 0, 0, 0.2),
     inset 0 2px 4px $white-shadow,
     inset 0 -2px 4px rgba(0, 0, 0, 0.1);
-  cursor: if($isSpinning, not-allowed, pointer);
   transition: all 0.3s ease;
   z-index: 20;
 }
