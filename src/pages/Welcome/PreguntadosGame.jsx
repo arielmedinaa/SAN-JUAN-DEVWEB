@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Play, RotateCcw, Trophy, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import CircularWheel from './components/ruleta/CircularWheel';
+import PreguntadosImg from "../../assets/preguntados.png"
 
 const PreguntadosGame = () => {
   const navigate = useNavigate();
@@ -57,10 +58,10 @@ const PreguntadosGame = () => {
     <div className="container-fluid min-vh-100 bg-gradient-to-br from-blue-400 to-purple-600 p-4">
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
-          <div className="text-center mb-4">
+          <div className="text-center">
             <h1 className="text-white fw-bold mb-3" style={{fontSize: '2.5rem'}}>
               <Trophy className="me-2" size={40} />
-              PREGUNTADOS
+              <img style={{ width: '1080px', height: '200px' }} src={PreguntadosImg} alt="preguntadosImg" />
             </h1>
             <div className="bg-white rounded-pill px-4 py-2 d-inline-block">
               <h3 className="mb-0 text-primary">
@@ -69,7 +70,7 @@ const PreguntadosGame = () => {
             </div>
           </div>
           {currentCategory && (
-            <div className="text-center mb-4">
+            <div className="text-center">
               <div 
                 className="d-inline-block px-4 py-3 rounded-3 text-white fw-bold"
                 style={{ backgroundColor: currentCategory.color }}
