@@ -18,14 +18,14 @@ const CircularWheel = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const sections = [
-    { icon: FaPencilAlt, color: '#4CAF50', rotation: 0, name: 'Arte', questionSet: 0 },
-    { icon: FaBuilding, color: '#FFC107', rotation: 45, name: 'Arquitectura', questionSet: 1 },
-    { icon: FaFootballBall, color: '#FF9800', rotation: 90, name: 'Deportes', questionSet: 2 },
-    { icon: FaLeaf, color: '#F44336', rotation: 135, name: 'Naturaleza', questionSet: 3 },
-    { icon: FaEye, color: '#E91E63', rotation: 180, name: 'Cultura', questionSet: 4 },
-    { icon: FaHatCowboy, color: '#9C27B0', rotation: 225, name: 'Historia', questionSet: 5 },
-    { icon: FaCoins, color: '#673AB7', rotation: 270, name: 'Economía', questionSet: 6 },
-    { icon: FaGlobe, color: '#2196F3', rotation: 315, name: 'Geografía', questionSet: 7 }
+    { icon: FaPencilAlt, color: '#4CAF50', rotation: 0, name: 'San Juan', questionSet: 0 },
+    { icon: FaBuilding, color: '#FFC107', rotation: 45, name: 'Starsoft', questionSet: 1 },
+    { icon: FaFootballBall, color: '#FF9800', rotation: 90, name: 'Historia del Paraguay', questionSet: 2 },
+    { icon: FaLeaf, color: '#F44336', rotation: 135, name: 'Historia General', questionSet: 3 },
+    { icon: FaEye, color: '#E91E63', rotation: 180, name: 'Starsoft', questionSet: 4 },
+    { icon: FaHatCowboy, color: '#9C27B0', rotation: 225, name: 'Starsoft', questionSet: 5 },
+    { icon: FaCoins, color: '#673AB7', rotation: 270, name: 'San Juan', questionSet: 6 },
+    { icon: FaGlobe, color: '#2196F3', rotation: 315, name: 'Historia del Paraguay', questionSet: 7 }
   ];
 
   const spinWheel = () => {

@@ -1,5 +1,5 @@
-import  { useState, useEffect } from 'react';
-import { Play, RotateCcw, Trophy, Star } from 'lucide-react';
+import  { useState } from 'react';
+import { Trophy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import CircularWheel from './components/ruleta/CircularWheel';
 import PreguntadosImg from "../../assets/preguntados.png"
@@ -16,8 +16,9 @@ const PreguntadosGame = () => {
     { id: 2, name: 'Starsoft', color: '#32CD32', icon: '🌍', questionSet: 1 },
     { id: 3, name: 'Historia del Paraguay', color: '#FF6347', icon: '🧪', questionSet: 2 },
     { id: 4, name: 'Historia General', color: '#9370DB', icon: '📚', questionSet: 3 },
-    // { id: 5, name: 'Deportes', color: '#1E90FF', icon: '⚽', questionSet: 4 },
-    // { id: 6, name: 'Tecnología', color: '#FF1493', icon: '💻', questionSet: 5 }
+    { id: 5, name: 'Starsoft', color: '#1E90FF', icon: '⚽', questionSet: 4 },
+    { id: 6, name: 'Starsoft', color: '#FF1493', icon: '💻', questionSet: 5 },
+    { id: 7, name: 'San Juan', color: '#FF1493', icon: '💻', questionSet: 5 }
 
     // "tipo San Juan 1",
     // "tipo Starsoft",
