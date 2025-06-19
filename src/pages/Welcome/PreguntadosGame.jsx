@@ -6,7 +6,7 @@ import PreguntadosImg from "../../assets/preguntados.png"
 import { useContadorPreguntasContext } from '../../context/ContadorContext';
 
 const PreguntadosGame = () => {
-  const { contador, totalPreguntas } = useContadorPreguntasContext();
+  const { contador, totalPreguntas, preguntasCorrectas, preguntasIncorrectas } = useContadorPreguntasContext();
   const navigate = useNavigate();
   const [isSpinning, setIsSpinning] = useState(false);
   const [currentCategory, setCurrentCategory] = useState(null);
@@ -67,7 +67,10 @@ const PreguntadosGame = () => {
     <div className="container-fluid min-vh-100 bg-gradient-to-br from-blue-400 to-purple-600 p-4">
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
-          <div className="text-center">
+          <div className="flex text-center justify-content-center align-items-center flex-column mb-4">
+            <h1 className='color-green'>Correctas: {preguntasCorrectas}</h1>
+            <h1 className='color-red'>Incorrectas: {preguntasIncorrectas}</h1>
+            <h1 className='color-red'>Total Preguntas: {contador}/{totalPreguntas}</h1>
             <h1 className="text-white fw-bold mb-3" style={{fontSize: '2.5rem'}}>
               <Trophy className="me-2" size={40} />
               <img style={{ width: '1080px', height: '200px' }} src={PreguntadosImg} alt="preguntadosImg" />
