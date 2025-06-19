@@ -1,119 +1,127 @@
-// CircularWheel.scss
-.wheel-container {
+$wheel-size: 400px;
+$center-size: 120px;
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$center-gradient: linear-gradient(145deg, #ffffff, #e6e6e6);
+$shadow-color: rgba(0, 0, 0, 0.3);
+$white-shadow: rgba(255, 255, 255, 0.8);
+
+.wheelContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20px;
 }
 
 .wheel {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: $wheel-size;
+  height: $wheel-size;
   border-radius: 50%;
   box-shadow: 
-    0 0 30px rgba(0, 0, 0, 0.3),
+    0 0 30px $shadow-color,
     inset 0 0 0 8px #8a8a8a,
     inset 0 0 0 12px #f0f0f0;
   overflow: hidden;
-  
-  .wheel-section {
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    transform-origin: 100% 100%;
-    transform: rotate(var(--rotation));
-    
-    &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-color);
-      clip-path: polygon(0 100%, 100% 100%, 100% 0);
-      transition: all 0.3s ease;
-    }
-    
-    &:hover::before {
-      filter: brightness(1.1);
-      transform: scale(1.02);
-    }
-    
-    .icon-container {
-      position: absolute;
-      top: 25%;
-      left: 60%;
-      transform: translate(-50%, -50%) rotate(calc(-1 * var(--rotation))) rotate(22.5deg);
-      z-index: 10;
-      
-      .section-icon {
-        font-size: 28px;
-        color: rgba(0, 0, 0, 0.7);
-        filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.3));
-        transition: all 0.3s ease;
-        
-        &:hover {
-          transform: scale(1.2);
-          color: rgba(0, 0, 0, 0.9);
-        }
-      }
-    }
-  }
-  
-  .wheel-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 
-      0 8px 16px rgba(0, 0, 0, 0.2),
-      inset 0 2px 4px rgba(255, 255, 255, 0.8),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 20;
-    
-    &:hover {
-      transform: translate(-50%, -50%) scale(1.05);
-      box-shadow: 
-        0 12px 24px rgba(0, 0, 0, 0.3),
-        inset 0 2px 4px rgba(255, 255, 255, 0.9),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.15);
-    }
-    
-    &:active {
-      transform: translate(-50%, -50%) scale(0.95);
-    }
-    
-    .center-text {
-      font-family: 'Arial', sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-      color: #333;
-      letter-spacing: 1px;
-      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-    }
-  }
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wheelSection {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  transform-origin: 100% 100%;
 }
 
-.wheel.spinning {
-  animation: spin 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.sectionBackground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  transition: all 0.3s ease;
+}
+
+.iconContainer {
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sectionIcon {
+  font-size: 28px;
+  color: rgba(0, 0, 0, 0.7);
+  filter: drop-shadow(0 2px 4px $white-shadow);
+  transition: all 0.3s ease;
+  margin-bottom: 4px;
+}
+
+.sectionName {
+  font-size: 10px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 0 1px 2px $white-shadow;
+  line-height: 1.2;
+}
+
+.wheelCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: $center-size;
+  height: $center-size;
+  background: $center-gradient;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px $white-shadow,
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  cursor: if($isSpinning, not-allowed, pointer);
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.centerText {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px $white-shadow;
+}
+
+.arrow {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 40px solid #fff;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  z-index: 30;
+}
+
+.categoryDisplay {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  z-index: 40;
+  box-shadow: 0 4px 15px $shadow-color;
 }
