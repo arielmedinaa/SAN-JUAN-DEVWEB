@@ -48,6 +48,70 @@ export const questions = [
         answer: "Carrera de embolsados",
       },
       {
+        question:
+          "¿Qué instrumento musical se suele tocar tradicionalmente durante la fiesta de San Juan?",
+        choices: ["Guitarra", "Arpa paraguaya", "Piano", "Flauta"],
+        answer: "Arpa paraguaya",
+      },
+      {
+        question:
+          "¿Cuál es el significado simbólico del fuego en la celebración de San Juan?",
+        choices: [
+          "Purificación y renovación",
+          "Castigo divino",
+          "Alegría y fiesta",
+          "Protección contra animales",
+        ],
+        answer: "Purificación y renovación",
+      },
+      {
+        question:
+          "¿Qué bebida tradicional se consume durante las festividades de San Juan?",
+        choices: ["Tereré", "Chicha", "Vino dulce", "Cerveza artesanal"],
+        answer: "Chicha",
+      },
+      {
+        question:
+          "¿Cómo se llama la danza típica que se realiza durante la fiesta de San Juan?",
+        choices: ["Polka paraguaya", "Joropo", "Chamamé", "Guarania"],
+        answer: "Polka paraguaya",
+      },
+      {
+        question:
+          "¿Qué planta se utiliza para decorar las casas durante la fiesta de San Juan?",
+        choices: ["Manduvi", "Palo santo", "Yvyra pytã", "Guayacán"],
+        answer: "Manduvi",
+      },
+      {
+        question:
+          "¿Qué se hace tradicionalmente con el 'pombero' durante la celebración de San Juan?",
+        choices: [
+          "Se le ofrece comida",
+          "Se baila alrededor",
+          "Se le pinta la cara",
+          "Se le asusta con fuegos artificiales",
+        ],
+        answer: "Se le ofrece comida",
+      },
+      {
+        question:
+          "¿Cuál es el momento del día más importante para la celebración de San Juan?",
+        choices: ["Medianoche", "Mediodía", "Tarde", "Mañana"],
+        answer: "Medianoche",
+      },
+      {
+        question:
+          "¿Qué simboliza la subida al 'yvyra syi' en la fiesta de San Juan?",
+        choices: [
+          "Superación de obstáculos",
+          "El inicio del verano",
+          "La unión familiar",
+          "El respeto a los ancestros",
+        ],
+        answer: "Superación de obstáculos",
+      },
+
+      {
         question: "¿Qué hay dentro de las cajas del juego 'mbokapu'?",
         choices: ["Sorpresas o petardos", "Caramelos", "Juguetes", "Pelotas"],
         answer: "Sorpresas o petardos",
@@ -79,6 +143,82 @@ export const questions = [
         ],
         answer: "Todo tipo de empresas",
       },
+      {
+        question: "¿Qué tipo de soporte ofrece Starsoft a sus usuarios?",
+        choices: [
+          "Soporte telefónico",
+          "Soporte 24/7 online",
+          "Soporte presencial",
+          "Soporte por correo postal",
+        ],
+        answer: "Soporte 24/7 online",
+      },
+      {
+        question:
+          "¿Qué módulo de Starsoft está diseñado para controlar los gastos de la empresa?",
+        choices: ["Tesorería", "Compras", "Contabilidad", "Presupuesto"],
+        answer: "Presupuesto",
+      },
+      {
+        question:
+          "¿Qué tipo de informes genera el módulo de facturación de Starsoft?",
+        choices: [
+          "Informes de ventas diarias",
+          "Informes de asistencia",
+          "Informes de sueldos",
+          "Informes de stock",
+        ],
+        answer: "Informes de ventas diarias",
+      },
+      {
+        question:
+          "¿Qué tecnología usa Starsoft para garantizar la seguridad de los datos?",
+        choices: [
+          "Encriptación SSL",
+          "Firewall básico",
+          "Contraseñas simples",
+          "Backup manual",
+        ],
+        answer: "Encriptación SSL",
+      },
+      {
+        question: "¿Qué permite hacer el módulo de compras en Starsoft?",
+        choices: [
+          "Generar órdenes y controlar proveedores",
+          "Emitir facturas electrónicas",
+          "Controlar asistencia",
+          "Realizar conciliaciones bancarias",
+        ],
+        answer: "Generar órdenes y controlar proveedores",
+      },
+      {
+        question:
+          "¿Cuál es el principal beneficio del módulo de inventario en Starsoft?",
+        choices: [
+          "Optimizar almacenamiento",
+          "Calcular nóminas",
+          "Enviar correos masivos",
+          "Realizar auditorías fiscales",
+        ],
+        answer: "Optimizar almacenamiento",
+      },
+      {
+        question: "¿Qué característica destaca el módulo de RRHH en Starsoft?",
+        choices: [
+          "Gestión de legajos y reportes de asistencia",
+          "Control de stock",
+          "Manejo de ventas",
+          "Configuración de impresoras",
+        ],
+        answer: "Gestión de legajos y reportes de asistencia",
+      },
+      {
+        question:
+          "¿Qué formato de respaldo permite Starsoft para los datos de la empresa?",
+        choices: ["SQL", "XML", "CSV", "JSON"],
+        answer: "SQL",
+      },
+
       {
         question:
           "¿Qué módulo de Starsoft permite registrar y controlar las ventas?",
@@ -154,6 +294,88 @@ export const questions = [
         choices: ["1811", "1810", "1821", "1806"],
         answer: "1811",
       },
+      {
+        question:
+          "¿Quién fue el primer presidente constitucional del Paraguay después de la independencia?",
+        choices: [
+          "Félix Paiva",
+          "Carlos Antonio López",
+          "Mariano Roque Alonso",
+          "José Gaspar Rodríguez de Francia",
+        ],
+        answer: "Carlos Antonio López",
+      },
+      {
+        question:
+          "¿Qué conflicto bélico enfrentó Paraguay con Bolivia a principios del siglo XX?",
+        choices: [
+          "Guerra del Chaco",
+          "Guerra de la Triple Alianza",
+          "Guerra Civil",
+          "Revolución de 1922",
+        ],
+        answer: "Guerra del Chaco",
+      },
+      {
+        question:
+          "¿Cuál fue el objetivo principal de la dictadura de Alfredo Stroessner?",
+        choices: [
+          "Mantener el poder y la estabilidad política",
+          "Abolir impuestos",
+          "Fomentar la democracia",
+          "Iniciar una guerra civil",
+        ],
+        answer: "Mantener el poder y la estabilidad política",
+      },
+      {
+        question:
+          "¿Qué tratado firmó Paraguay para definir sus fronteras con Argentina en el siglo XIX?",
+        choices: [
+          "Tratado de 1876",
+          "Tratado de Madrid",
+          "Tratado de Asunción",
+          "Tratado de la Triple Alianza",
+        ],
+        answer: "Tratado de 1876",
+      },
+      {
+        question:
+          "¿Qué rol tuvo José Gaspar Rodríguez de Francia en la historia paraguaya?",
+        choices: [
+          "Dictador y primer líder independiente",
+          "Presidente electo por voto popular",
+          "General en la Guerra del Chaco",
+          "Fundador de la Universidad Nacional",
+        ],
+        answer: "Dictador y primer líder independiente",
+      },
+      {
+        question: "¿Qué evento marcó el fin de la Guerra de la Triple Alianza?",
+        choices: [
+          "Muerte de Francisco Solano López",
+          "Firma de la paz en Buenos Aires",
+          "Ocupación de Asunción",
+          "Intervención de Brasil",
+        ],
+        answer: "Muerte de Francisco Solano López",
+      },
+      {
+        question:
+          "¿Qué idioma se promovió durante el gobierno de José Gaspar Rodríguez de Francia?",
+        choices: ["Guaraní", "Español", "Portugués", "Francés"],
+        answer: "Guaraní",
+      },
+      {
+        question: "¿Qué consecuencia tuvo la Guerra del Chaco para Paraguay?",
+        choices: [
+          "Expansión territorial",
+          "Pérdida territorial significativa",
+          "Estabilidad económica",
+          "Incremento demográfico",
+        ],
+        answer: "Expansión territorial",
+      },
+
       {
         question:
           "¿Quién fue el líder paraguayo durante la Guerra de la Triple Alianza?",
@@ -276,6 +498,65 @@ export const questions = [
           "¿Quién escribió 'El Príncipe', un tratado sobre política y poder?",
         choices: ["Machiavelli", "Platón", "Aristóteles", "Sócrates"],
         answer: "Machiavelli",
+      },
+      {
+        question: "¿Qué evento desencadenó la Primera Guerra Mundial en 1914?",
+        choices: [
+          "Asesinato del Archiduque Francisco Fernando",
+          "Invasión de Polonia",
+          "Revolución Rusa",
+          "Golpe de Estado en Alemania",
+        ],
+        answer: "Asesinato del Archiduque Francisco Fernando",
+      },
+      {
+        question: "¿Cuál fue la capital del Imperio Romano?",
+        choices: ["Roma", "Atenas", "Cartago", "Constantinopla"],
+        answer: "Roma",
+      },
+      {
+        question: "¿Quién fue el líder de la Revolución Rusa de 1917?",
+        choices: ["Lenin", "Stalin", "Trotsky", "Kerenski"],
+        answer: "Lenin",
+      },
+      {
+        question: "¿Qué tratado puso fin a la Primera Guerra Mundial?",
+        choices: [
+          "Tratado de Versalles",
+          "Tratado de París",
+          "Tratado de Tordesillas",
+          "Tratado de Brest-Litovsk",
+        ],
+        answer: "Tratado de Versalles",
+      },
+      {
+        question:
+          "¿En qué año se firmó la Declaración de Independencia de los Estados Unidos?",
+        choices: ["1776", "1789", "1492", "1812"],
+        answer: "1776",
+      },
+      {
+        question:
+          "¿Cuál fue el principal objetivo de la Revolución Industrial?",
+        choices: [
+          "Aumentar la producción mediante maquinaria",
+          "Crear nuevos imperios",
+          "Reducir la población rural",
+          "Promover la democracia",
+        ],
+        answer: "Aumentar la producción mediante maquinaria",
+      },
+      {
+        question:
+          "¿Qué imperio conquistó gran parte de Sudamérica antes de la llegada de los españoles?",
+        choices: ["Inca", "Azteca", "Maya", "Olmeca"],
+        answer: "Inca",
+      },
+      {
+        question:
+          "¿Quién fue el famoso líder que unificó Alemania en el siglo XIX?",
+        choices: ["Otto von Bismarck", "Napoleón", "Luis XIV", "Wilhelm II"],
+        answer: "Otto von Bismarck",
       },
     ],
   },
