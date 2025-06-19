@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useContadorPreguntasContext } from "../../context/ContadorContext";
 
 const Question = () => {
-  const { siguientePregunta, registrarRespuestaCorrecta, registrarRespuestaIncorrecta } = useContadorPreguntasContext();
+  const {
+    siguientePregunta,
+    registrarRespuestaCorrecta,
+    registrarRespuestaIncorrecta,
+  } = useContadorPreguntasContext();
   const [clickedIndex, setClickedIndex] = useState(null);
   const [pregunta, setPregunta] = useState(null);
   const [categoria, setcategoria] = useState("");
@@ -27,22 +31,10 @@ const Question = () => {
         }
         return prev + 2;
       });
-    }, 10000);
+    }, 250);
     return () => clearInterval(interval);
   }, [categoria]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgreso((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleQuestions = (ch, index) => {
     if (ch === pregunta.answer) {
