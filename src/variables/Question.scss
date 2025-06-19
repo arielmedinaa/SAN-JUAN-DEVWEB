@@ -9,7 +9,12 @@ $accent-color: #0dddf5;
 $shadow-light: rgba(0, 0, 0, 0.1);
 $shadow-medium: rgba(0, 0, 0, 0.3);
 $accent-shadow: rgba(78, 205, 196, 0.3);
-
+* {
+  margin: 0;
+  left: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -22,7 +27,19 @@ $accent-shadow: rgba(78, 205, 196, 0.3);
   box-shadow: 0 8px 25px $shadow-light;
   border: 3px solid $light-gray;
 }
-
+.divProgreso {
+  width: 100%;
+  height: 3vh;
+  position: absolute;
+  top: 10px;
+  overflow: hidden;
+}
+.progreso {
+  width: 0%;
+  height: 100%;
+  border-radius: 50px;
+  background-color: rgb(5, 211, 70);
+}
 @mixin button-hover {
   transition: all 0.3s ease;
 
