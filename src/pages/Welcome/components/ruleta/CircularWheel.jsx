@@ -43,10 +43,12 @@ const CircularWheel = () => {
       const adjustedRotation = (360 - normalizedRotation + (sectionAngle / 2)) % 360;
       const categoryIndex = Math.floor(adjustedRotation / sectionAngle);
       const selected = sections[categoryIndex];
+      localStorage.setItem('selectedQuestionSet', selected.questionSet.toString());
+      localStorage.setItem('selectedCategory', selected.name);
       
       setSelectedCategory(selected);
       setTimeout(() => {
-        navigate('/questions', { 
+        navigate('/questions', {
           state: { 
             selectedQuestionSet: selected.questionSet,
             selectedCategory: selected.name 

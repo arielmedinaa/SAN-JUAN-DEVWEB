@@ -35,7 +35,7 @@ $accent-shadow: rgba(78, 205, 196, 0.3);
   }
 }
 
-body {
+.body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -48,7 +48,7 @@ body {
   @include flex-center;
   padding: 20px;
 }
-body::before {
+.body::before {
   content: "";
   position: absolute;
   top: 0;
