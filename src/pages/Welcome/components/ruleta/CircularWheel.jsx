@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { 
   FaPencilAlt, 
   FaFootballBall, 
@@ -69,9 +69,9 @@ const CircularWheel = () => {
             ¡{selectedCategory.name} seleccionado!
           </div>
         )}
-        
+
         <div className="arrow" />
-        
+
         <div 
           className={`wheel ${isSpinning ? 'spinning' : ''}`}
           style={{ 
@@ -105,9 +105,9 @@ const CircularWheel = () => {
               </div>
             );
           })}
-          
+
           <div 
-            className={`wheelCenter ${isSpinning ? 'spinning' : ''}`}
+            className="wheelCenter"
             onClick={spinWheel}
           >
             <span className="centerText">

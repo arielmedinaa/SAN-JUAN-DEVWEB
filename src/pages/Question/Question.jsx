@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { questions } from "../Welcome/const/Preguntas";
 import { useNavigate } from "react-router-dom";
+import { useContadorPreguntasContext } from "../../context/ContadorContext";
 
 const Question = () => {
+  const { siguientePregunta } = useContadorPreguntasContext();
   const [clickedIndex, setClickedIndex] = useState(null);
   const [pregunta, setPregunta] = useState(null);
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ const Question = () => {
 
   const handleQuestions = (index) => {
     setClickedIndex(index);
-
+    siguientePregunta();
     setTimeout(() => {
       navigate("/");
     }, 1000);

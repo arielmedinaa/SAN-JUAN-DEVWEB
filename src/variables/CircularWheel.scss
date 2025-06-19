@@ -9,8 +9,12 @@ $white-shadow: rgba(255, 255, 255, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 40vh;
   padding: 20px;
+}
+
+.wheelWrapper {
+  position: relative;
 }
 
 .wheel {
@@ -26,22 +30,23 @@ $white-shadow: rgba(255, 255, 255, 0.8);
 .wheelSection {
   position: absolute;
   width: 50%;
-  height: 50%;
-  transform-origin: 100% 100%;
+  height: 100%;
+  transform-origin: 100% 50%;
 }
 
 .sectionBackground {
   position: absolute;
   width: 100%;
   height: 100%;
-  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
   transition: all 0.3s ease;
 }
 
 .iconContainer {
   position: absolute;
-  top: 25%;
-  left: 60%;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -53,7 +58,6 @@ $white-shadow: rgba(255, 255, 255, 0.8);
   font-size: 28px;
   color: rgba(0, 0, 0, 0.7);
   filter: drop-shadow(0 2px 4px $white-shadow);
-  transition: all 0.3s ease;
   margin-bottom: 4px;
 }
 
@@ -79,7 +83,8 @@ $white-shadow: rgba(255, 255, 255, 0.8);
   justify-content: center;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), inset 0 2px 4px $white-shadow,
     inset 0 -2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  border: 3px solid #ddd;
+  cursor: pointer;
   z-index: 20;
 }
 
