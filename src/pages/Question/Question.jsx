@@ -47,9 +47,6 @@ const Question = () => {
   const handleQuestions = (ch, index) => {
     if (ch === pregunta.answer) {
       registrarRespuestaCorrecta();
-    } else {
-      registrarRespuestaIncorrecta();
-      setProgreso(0);
     }
     setClickedIndex(index);
     siguientePregunta();

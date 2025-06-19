@@ -31,6 +31,10 @@ const PreguntadosGame = () => {
 
 
   const spinWheel = () => {
+    if (contador >= totalPreguntas) {
+      alert("Has respondido todas las preguntas. ¡Reinicia el juego!");
+      return;
+    }
     if (isSpinning) return;
     
     setIsSpinning(true);
@@ -68,9 +72,7 @@ const PreguntadosGame = () => {
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
           <div className="flex text-center justify-content-center align-items-center flex-column mb-4">
-            <h1 className='color-green'>Correctas: {preguntasCorrectas}</h1>
-            <h1 className='color-red'>Incorrectas: {preguntasIncorrectas}</h1>
-            <h1 className='color-red'>Total Preguntas: {contador}/{totalPreguntas}</h1>
+            <h1 className='color-green'>Correctas: {preguntasCorrectas}/{totalPreguntas}</h1>
             <h1 className="text-white fw-bold mb-3" style={{fontSize: '2.5rem'}}>
               <Trophy className="me-2" size={40} />
               <img style={{ width: '1080px', height: '200px' }} src={PreguntadosImg} alt="preguntadosImg" />

@@ -10,8 +10,10 @@ import {
   FaEye 
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useContadorPreguntasContext } from '../../../../context/ContadorContext';
 
 const CircularWheel = () => {
+  const { contador, totalPreguntas } = useContadorPreguntasContext();
   const navigate = useNavigate();
   const [isSpinning, setIsSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
@@ -29,6 +31,10 @@ const CircularWheel = () => {
   ];
 
   const spinWheel = () => {
+    if (contador >= totalPreguntas) {
+      alert("Has respondido todas las preguntas. ¡Reinicia el juego!");
+      return;
+    }
     if (isSpinning) return;
     
     setIsSpinning(true);
