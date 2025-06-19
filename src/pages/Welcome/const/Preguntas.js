@@ -1,182 +1,281 @@
 export const questions = [
   {
-    tipo: "Arte",
+    tipo: "San Juan",
     questions: [
       {
-        question: "¿Quién pintó la Mona Lisa?",
-        choices: ["Picasso", "Da Vinci", "Van Gogh", "Rembrandt"],
-        answer: "Da Vinci",
-      },
-      {
-        question: "¿En qué país nació Frida Kahlo?",
-        choices: ["España", "México", "Argentina", "Chile"],
-        answer: "México",
-      },
-      {
-        question: "¿Cuál es el estilo arquitectónico de la Sagrada Familia?",
-        choices: ["Gótico", "Barroco", "Modernista", "Renacimiento"],
-        answer: "Modernista",
-      },
-    ],
-  },
-  {
-    tipo: "Arquitectura",
-    questions: [
-      {
-        question: "¿Quién diseñó la Torre Eiffel?",
+        question:
+          "¿Qué juego tradicional de San Juan consiste en caminar descalzo sobre brasas?",
         choices: [
-          "Gustave Eiffel",
-          "Le Corbusier",
-          "Frank Lloyd Wright",
-          "Zaha Hadid",
+          "Pelota tata",
+          "Toro candil",
+          "Piky vóley",
+          "Carrera de embolsados",
         ],
-        answer: "Gustave Eiffel",
-      },
-      {
-        question: "¿En qué ciudad está el Coliseo Romano?",
-        choices: ["París", "Roma", "Londres", "Atenas"],
-        answer: "Roma",
-      },
-      {
-        question: "¿Qué material es característico del Guggenheim Bilbao?",
-        choices: ["Hormigón", "Vidrio", "Titanio", "Acero"],
-        answer: "Titanio",
-      },
-    ],
-  },
-  {
-    tipo: "Deportes",
-    questions: [
-      {
-        question: "¿Cuántos jugadores hay en un equipo de fútbol?",
-        choices: ["9", "10", "11", "12"],
-        answer: "11",
-      },
-      {
-        question: "¿En qué deporte se usa un bate y una pelota?",
-        choices: ["Golf", "Béisbol", "Críquet", "Hockey"],
-        answer: "Béisbol",
-      },
-      {
-        question: "¿En qué ciudad se celebraron los JJOO de 2012?",
-        choices: ["Londres", "Pekín", "Río", "Atenas"],
-        answer: "Londres",
-      },
-    ],
-  },
-  {
-    tipo: "Naturaleza",
-    questions: [
-      {
-        question: "¿Qué científico propuso la teoría de la evolución?",
-        choices: ["Newton", "Einstein", "Darwin", "Curie"],
-        answer: "Darwin",
-      },
-      {
-        question: "¿Cuál es el ser vivo más grande del planeta?",
-        choices: ["Ballena azul", "Secuoya", "Hongo Armillaria", "Gran coral"],
-        answer: "Hongo Armillaria",
-      },
-      {
-        question: "¿Qué gas es necesario para la fotosíntesis?",
-        choices: ["Oxígeno", "Nitrógeno", "Dióxido de carbono", "Helio"],
-        answer: "Dióxido de carbono",
-      },
-    ],
-  },
-  {
-    tipo: "Cultura",
-    questions: [
-      {
-        question: "¿En qué país se celebra el Día de los Muertos?",
-        choices: ["Perú", "México", "España", "Colombia"],
-        answer: "México",
-      },
-      {
-        question: "¿Qué instrumento es típico de Argentina?",
-        choices: ["Sitar", "Bandoneón", "Maracas", "Ocarina"],
-        answer: "Bandoneón",
+        answer: "Pelota tata",
       },
       {
         question:
-          "¿En qué idioma se escribe originalmente “La Divina Commedia”?",
-        choices: ["Español", "Italiano", "Francés", "Inglés"],
-        answer: "Italiano",
+          "¿Qué personaje persigue a la gente en San Juan con una cabeza falsa y suele asustar a los niños?",
+        choices: ["Judaskái", "Karai Octubre", "Toro candil", "Pombero"],
+        answer: "Toro candil",
+      },
+      {
+        question: "¿Qué se cuelga en lo alto del 'yvyra syi'?",
+        choices: ["Comida o premios", "Una piñata", "Un muñeco", "Una pelota"],
+        answer: "Comida o premios",
+      },
+      {
+        question:
+          "¿Qué material se usa para hacer el 'yvyra syi' más difícil de escalar?",
+        choices: ["Grasa o jabón", "Agua", "Pintura", "Ceniza"],
+        answer: "Grasa o jabón",
+      },
+      {
+        question:
+          "¿Qué se quema como parte de una tradición simbólica en San Juan?",
+        choices: ["Muñeco Judaskái", "Pelotas", "Ropa vieja", "Cajas sorpresa"],
+        answer: "Muñeco Judaskái",
+      },
+      {
+        question:
+          "¿Cuál de estos juegos implica correr con los pies dentro de una bolsa?",
+        choices: [
+          "Carrera de embolsados",
+          "Pelota tata",
+          "Mbokapu",
+          "Yvyra syi",
+        ],
+        answer: "Carrera de embolsados",
+      },
+      {
+        question: "¿Qué hay dentro de las cajas del juego 'mbokapu'?",
+        choices: ["Sorpresas o petardos", "Caramelos", "Juguetes", "Pelotas"],
+        answer: "Sorpresas o petardos",
+      },
+      {
+        question:
+          "¿Qué expresión popular se escucha durante la fiesta de San Juan en Paraguay?",
+        choices: [
+          "San Juan ára peteî jey",
+          "San Juan pehê mbopi",
+          "San Juan osê ohasa",
+          "San Juan ára oikó avei mba’e oikóva",
+        ],
+        answer: "San Juan ára oikó avei mba’e oikóva",
       },
     ],
   },
   {
-    tipo: "Historia",
+    tipo: "Starsoft",
     questions: [
       {
-        question: "¿En qué año llegó Cristóbal Colón a América?",
-        choices: ["1492", "1502", "1482", "1512"],
-        answer: "1492",
+        question:
+          "¿Para qué tipo de empresas está orientado el sistema Starsoft?",
+        choices: [
+          "Sólo industriales",
+          "Todo tipo de empresas",
+          "Solo comercios pequeños",
+          "Empresas extranjeras",
+        ],
+        answer: "Todo tipo de empresas",
       },
       {
-        question: "¿Quién fue el primer emperador romano?",
-        choices: ["Nerón", "Julio César", "Augusto", "Trajano"],
-        answer: "Augusto",
+        question:
+          "¿Qué módulo de Starsoft permite registrar y controlar las ventas?",
+        choices: ["RRHH", "Contabilidad", "Inventario", "Facturación"],
+        answer: "Facturación",
       },
       {
-        question: "¿En qué país comenzó la Revolución Industrial?",
-        choices: ["Francia", "Alemania", "Reino Unido", "EE.UU."],
-        answer: "Reino Unido",
+        question: "¿Qué se gestiona en el módulo de RRHH de Starsoft?",
+        choices: [
+          "Impuestos",
+          "Inventario",
+          "Legajos, asistencia y sueldos",
+          "Facturas electrónicas",
+        ],
+        answer: "Legajos, asistencia y sueldos",
+      },
+      {
+        question: "¿Qué documento genera el módulo contable de Starsoft?",
+        choices: [
+          "Recibos de sueldo",
+          "Factura legal",
+          "Asientos contables",
+          "Órdenes de compra",
+        ],
+        answer: "Asientos contables",
+      },
+      {
+        question:
+          "¿Cuál es el beneficio de usar el módulo de stock en Starsoft?",
+        choices: [
+          "Ver historial clínico",
+          "Controlar existencia de productos",
+          "Emitir cheques",
+          "Enviar correos automáticos",
+        ],
+        answer: "Controlar existencia de productos",
+      },
+      {
+        question:
+          "¿Qué formato de archivo suele usarse para exportar reportes en Starsoft?",
+        choices: ["PDF", "TXT", "JPEG", "MP3"],
+        answer: "PDF",
+      },
+      {
+        question:
+          "¿Qué funcionalidad tiene el módulo de Tesorería en Starsoft?",
+        choices: [
+          "Control de stock",
+          "Gestión de sueldos",
+          "Gestión de bancos y caja",
+          "Gestión de ventas",
+        ],
+        answer: "Gestión de bancos y caja",
+      },
+      {
+        question:
+          "¿Qué se puede generar desde el módulo de compras en Starsoft?",
+        choices: [
+          "Chips telefónicos",
+          "Órdenes de compra",
+          "Contraseñas",
+          "Asientos contables",
+        ],
+        answer: "Órdenes de compra",
       },
     ],
   },
   {
-    tipo: "Economía",
+    tipo: "Historia del Paraguay",
     questions: [
       {
-        question: "¿Qué es el PIB?",
-        choices: [
-          "Producto Interno Bruto",
-          "Precio Interno Bruto",
-          "Producto Inverso Bruto",
-          "Precio Inverso Bruto",
-        ],
-        answer: "Producto Interno Bruto",
+        question: "¿En qué año se declaró la independencia del Paraguay?",
+        choices: ["1811", "1810", "1821", "1806"],
+        answer: "1811",
       },
       {
-        question: "¿Qué institución emite moneda en EE.UU.?",
+        question:
+          "¿Quién fue el líder paraguayo durante la Guerra de la Triple Alianza?",
         choices: [
-          "Banco Mundial",
-          "Reserva Federal",
-          "Banco Central Europeo",
-          "FMI",
+          "Carlos Antonio López",
+          "José Gaspar Rodríguez de Francia",
+          "Francisco Solano López",
+          "Eligio Ayala",
         ],
-        answer: "Reserva Federal",
+        answer: "Francisco Solano López",
       },
       {
-        question: "¿Qué es la inflación?",
+        question:
+          "¿Qué país NO formó parte de la Triple Alianza contra Paraguay?",
+        choices: ["Brasil", "Uruguay", "Argentina", "Bolivia"],
+        answer: "Bolivia",
+      },
+      {
+        question: "¿Qué presidente paraguayo fue conocido como 'El Supremo'?",
         choices: [
-          "Aumento del desempleo",
-          "Devaluación monetaria",
-          "Caída del PIB",
-          "Subida general de precios",
+          "Francisco Solano López",
+          "Alfredo Stroessner",
+          "José Gaspar Rodríguez de Francia",
+          "Juan Carlos Wasmosy",
         ],
-        answer: "Subida general de precios",
+        answer: "José Gaspar Rodríguez de Francia",
+      },
+      {
+        question: "¿Cuál fue la causa principal de la Guerra del Chaco?",
+        choices: [
+          "Conflicto por territorios petroleros",
+          "Disputa religiosa",
+          "Problemas limítrofes con Argentina",
+          "Ocupación de Asunción",
+        ],
+        answer: "Conflicto por territorios petroleros",
+      },
+      {
+        question: "¿En qué año terminó la dictadura de Alfredo Stroessner?",
+        choices: ["1989", "1982", "1991", "1975"],
+        answer: "1989",
+      },
+      {
+        question:
+          "¿Cuál fue la capital del Paraguay durante la época colonial?",
+        choices: ["Encarnación", "Asunción", "Villarica", "Fuerte Olimpo"],
+        answer: "Asunción",
+      },
+      {
+        question: "¿Qué tratado puso fin a la Guerra de la Triple Alianza?",
+        choices: [
+          "Tratado de Asunción",
+          "Tratado de Petrópolis",
+          "Tratado de Río de Janeiro",
+          "Tratado de Paz y Amistad",
+        ],
+        answer: "Tratado de Río de Janeiro",
       },
     ],
   },
   {
-    tipo: "Geografía",
+    tipo: "Historia General",
     questions: [
       {
-        question: "¿Cuál es el río más largo del mundo?",
-        choices: ["Nilo", "Amazonas", "Yangtsé", "Misisipi"],
-        answer: "Amazonas",
+        question: "¿En qué año comenzó la Segunda Guerra Mundial?",
+        choices: ["1939", "1914", "1945", "1929"],
+        answer: "1939",
       },
       {
-        question: "¿Cuántos continentes hay?",
-        choices: ["5", "6", "7", "8"],
-        answer: "7",
+        question:
+          "¿Quién fue el líder del Imperio Mongol que conquistó gran parte de Asia y Europa?",
+        choices: ["Gengis Kan", "Alejandro Magno", "Atila", "Napoleón"],
+        answer: "Gengis Kan",
       },
       {
-        question: "¿Cuál es el país más grande por superficie?",
-        choices: ["Canadá", "China", "Rusia", "EE.UU."],
-        answer: "Rusia",
+        question:
+          "¿Cuál fue la civilización que construyó las pirámides de Egipto?",
+        choices: ["Mayas", "Aztecas", "Egipcios", "Romanos"],
+        answer: "Egipcios",
+      },
+      {
+        question:
+          "¿Qué revolución comenzó en 1789 y cambió el sistema político de Francia?",
+        choices: [
+          "Revolución Industrial",
+          "Revolución Francesa",
+          "Revolución Rusa",
+          "Revolución Americana",
+        ],
+        answer: "Revolución Francesa",
+      },
+      {
+        question: "¿Quién fue el primer presidente de los Estados Unidos?",
+        choices: [
+          "Thomas Jefferson",
+          "George Washington",
+          "Abraham Lincoln",
+          "John Adams",
+        ],
+        answer: "George Washington",
+      },
+      {
+        question: "¿En qué continente se originó la Revolución Industrial?",
+        choices: ["Asia", "Europa", "América", "África"],
+        answer: "Europa",
+      },
+      {
+        question:
+          "¿Qué guerra enfrentó a Norte y Sur en Estados Unidos entre 1861 y 1865?",
+        choices: [
+          "Primera Guerra Mundial",
+          "Guerra Civil",
+          "Guerra de Secesión",
+          "Guerra Fría",
+        ],
+        answer: "Guerra Civil",
+      },
+      {
+        question:
+          "¿Quién escribió 'El Príncipe', un tratado sobre política y poder?",
+        choices: ["Machiavelli", "Platón", "Aristóteles", "Sócrates"],
+        answer: "Machiavelli",
       },
     ],
   },
