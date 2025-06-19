@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { 
   FaPencilAlt, 
   FaFootballBall, 
@@ -10,7 +10,6 @@ import {
   FaEye 
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import './CircularWheel.scss'; // Importar el archivo SCSS
 
 const CircularWheel = () => {
   const navigate = useNavigate();

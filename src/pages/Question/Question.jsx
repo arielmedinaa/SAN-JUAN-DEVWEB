@@ -1,21 +1,10 @@
 import { useState } from "react";
-
+import { questions } from "../Welcome/const/Preguntas";
 const Question = () => {
-  const questions = [
-    {
-      tipo: "Ciencia",
-      question: "¿En que fecha se celebra el San Juan Ara?",
-      results: [
-        { correct: false, res: "21 de junio" },
-        { correct: false, res: "22 de junio" },
-        { correct: false, res: "24 de julio" },
-        { correct: true, res: "24 de junio" },
-      ],
-    },
-  ];
-
   const [clickedIndex, setClickedIndex] = useState(null);
-
+  
+  const randomIndex = Math.floor(Math.random() * questions.length);
+  const pregunta = questions[randomIndex];
   const handleQuestions = (index) => {
     setClickedIndex(index);
   };
@@ -34,11 +23,11 @@ const Question = () => {
       </div>
 
       <div className="question-card">
-        <h2 className="question-text">{questions[0].question}</h2>
+        <h2 className="question-text">{pregunta.question}</h2>
       </div>
 
       <div className="answers-container">
-        {questions[0].results?.map((r, indice) => (
+        {pregunta?.results?.map((r, indice) => (
           <div
             key={indice}
             className="answer-option"
