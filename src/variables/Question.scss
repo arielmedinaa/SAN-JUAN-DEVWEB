@@ -1,5 +1,5 @@
 $primary-gradient: linear-gradient(135deg, #0064fa 0%, #4ecdc4 100%);
-$secondary-gradient: linear-gradient(135deg, #081bc4, #1248d0);
+$secondary-gradient: #818cf8;
 $accent-gradient: linear-gradient(135deg, #fff, #fff);
 $white: #ffffff;
 $light-gray: #f0f0f0;
@@ -50,35 +50,12 @@ $accent-shadow: rgba(78, 205, 196, 0.3);
     transform: translateY(0);
   }
 }
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Arial", sans-serif;
-  background-image: url("../../public/trivia-crack-2_banner.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  @include flex-center;
-  padding: 20px;
-}
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
-}
+
 .body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
-  background-image: url("../../public/fondousuario.png");
+  background-image: url("../../public/background2.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -131,6 +108,15 @@ body::before {
     animation: shimmer 3s infinite;
   }
 }
+
+.backgroundImage {
+  background-image: url('../../public/background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
 
 .decorative-elements {
   position: absolute;
@@ -242,30 +228,7 @@ body::before {
     }
   }
 }
-.divmsg {
-  width: 50vw;
-  height: 10vh;
-  background-color: #fff;
-  position: absolute;
-  z-index: 1000;
-  right: 15px;
-  top: 15px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  .divtext {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    & h1 {
-      font-size: 1rem;
-      font-weight: 500;
-    }
-  }
-}
+
 @keyframes shimmer {
   0% {
     transform: translateX(-100%) rotate(45deg);

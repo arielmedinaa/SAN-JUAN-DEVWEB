@@ -5,13 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "autoprefixer": "^10.4.21",
     "bootstrap": "^5.3.3",
     "lucide-react": "^0.518.0",
+    "postcss": "^8.5.6",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.3",
     "react-confetti": "^6.1.0",
@@ -29,6 +34,7 @@
     "eslint-plugin-react": "^7.34.2",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
-    "vite": "^5.3.1"
+    "tailwindcss": "3",
+    "vite": "^6.3.5"
   }
 }
