@@ -21,7 +21,6 @@ const PreguntadosGame = () => {
   const [currentCategory, setCurrentCategory] = useState(null);
   const [score, setScore] = useState(0);
   const [rotation, setRotation] = useState(0);
-  //console.log("contador", contador, totalPreguntas);
 
   const categories = [
     { id: 1, name: "San Juan", color: "#FFD700", icon: "🏛️", questionSet: 0 },

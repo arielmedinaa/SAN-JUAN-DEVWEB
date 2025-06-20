@@ -13,7 +13,7 @@ export const ContadorPreguntasProvider = ({ children }) => {
   const [hasLost, setHasLost] = useState(false);
 
   const siguientePregunta = () => {
-    setContador((prev) => (prev < TOTAL_PREGUNTAS ? prev + 1 : prev));
+    setContador((prev) => (prev + 1 ));
   };
 
   const registrarRespuestaCorrecta = () => {
