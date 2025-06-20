@@ -1,13 +1,12 @@
 import { useState, useRef } from 'react';
 import { 
-  FaBell, FaComment, FaSmile, FaHeart, FaStar, FaLightbulb,
-  FaFootballBall, FaLeaf, FaGlobe, FaCoins, FaHatCowboy, 
-  FaBuilding, FaEye, FaPencilAlt 
+  FaBell, FaComment, FaSmile, FaHeart, FaStar, FaLightbulb
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useContadorPreguntasContext } from '../../../../context/ContadorContext';
+import { toast } from 'react-toastify';
 
-const CircularWheel = () => {
+const CircularWheel = ({ resetGame }) => {
   const { contador, totalPreguntas } = useContadorPreguntasContext();
   const navigate = useNavigate();
   const [degree, setDegree] = useState(1800);
@@ -27,6 +26,13 @@ const CircularWheel = () => {
   ];
 
   const spinWheel = () => {
+    if (contador >= totalPreguntas) {
+      toast.error("Has respondido todas las preguntas. ¡Reinicia el juego!");
+      resetGame();
+      return;
+    }
+
+
     if (isSpinning) return;
     
     setIsSpinning(true);

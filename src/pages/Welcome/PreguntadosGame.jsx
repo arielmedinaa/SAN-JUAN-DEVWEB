@@ -3,6 +3,7 @@ import { Trophy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import CircularWheel from './components/ruleta/CircularWheel';
 import { useContadorPreguntasContext } from '../../context/ContadorContext';
+import { toast } from 'react-toastify';
 
 const PreguntadosGame = () => {
   const { contador, totalPreguntas, preguntasCorrectas } = useContadorPreguntasContext();
@@ -26,7 +27,7 @@ const PreguntadosGame = () => {
 
   const spinWheel = () => {
     if (contador >= totalPreguntas) {
-      alert("Has respondido todas las preguntas. ¡Reinicia el juego!");
+      toast.error("Has respondido todas las preguntas. ¡Reinicia el juego!");
       return;
     }
     if (isSpinning) return;
@@ -104,6 +105,7 @@ const PreguntadosGame = () => {
               isSpinning={isSpinning}
               rotation={rotation}
               onSpin={spinWheel}
+              resetGame={resetGame}
             />
           </div>
         </div>
