@@ -117,7 +117,6 @@ const CircularWheel = () => {
             onClick={spinWheel}
           >
             <span className="centerText">
-              {isSpinning ? 'GIRANDO...' : 'GIRAR'}
             </span>
           </div>
         </div>

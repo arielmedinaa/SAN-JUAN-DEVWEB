@@ -5,6 +5,7 @@ import Question from "../pages/Question/Question";
 import { ContadorPreguntasProvider } from "../context/ContadorContext";
 
 const AppRouter = () => (
+    
   <HashRouter>
     <ContadorPreguntasProvider>
       <Routes>
