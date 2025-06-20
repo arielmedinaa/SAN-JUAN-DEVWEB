@@ -18,6 +18,7 @@ const Question = () => {
   const [categoria, setcategoria] = useState("");
   const [progreso, setProgreso] = useState(0);
   const [respondido, setRespondido] = useState(false);
+  const [shuffledChoices, setShuffledChoices] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     setcategoria(localStorage.getItem("selectedCategory"));
@@ -36,7 +37,7 @@ const Question = () => {
         }
         return prev + 2;
       });
-    }, 300);
+    }, 265);
     return () => clearInterval(interval);
   }, [categoria]);
 
@@ -59,6 +60,13 @@ const Question = () => {
       navigate("/");
     }, 1000);
   };
+
+  useEffect(() => {
+    if (pregunta?.choices) {
+      const shuffled = [...pregunta.choices].sort(() => Math.random() - 0.5);
+      setShuffledChoices(shuffled);
+    }
+  }, [pregunta]);
   useEffect(() => {
     if (progreso >= 100) {
       siguientePregunta();
@@ -95,7 +103,7 @@ const Question = () => {
         </div>
 
         <div className="answers-container">
-          {pregunta?.choices.map((choice, indice) => (
+          {shuffledChoices.map((choice, indice) => (
             <div
               key={indice}
               className="answer-option"
