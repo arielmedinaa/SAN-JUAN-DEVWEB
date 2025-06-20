@@ -110,13 +110,12 @@ $accent-shadow: rgba(78, 205, 196, 0.3);
 }
 
 .backgroundImage {
-  background-image: url('../../public/background.webp');
+  background-image: url("/public/background.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
 }
-
 
 .decorative-elements {
   position: absolute;
