@@ -6,8 +6,8 @@ export const useContadorPreguntas = () => useContext(ContadorPreguntasContext);
 
 export const ContadorPreguntasProvider = ({ children }) => {
     const TOTAL_PREGUNTAS = 5;
-    const [contador, setContador] = useState(5);
-    const [preguntasCorrectas, setPreguntasCorrectas] = useState(5);
+    const [contador, setContador] = useState(0);
+    const [preguntasCorrectas, setPreguntasCorrectas] = useState(0);
     const [preguntasIncorrectas, setPreguntasIncorrectas] = useState(0);
     const [hasWon, setHasWon] = useState(false);
     const [hasLost, setHasLost] = useState(false);
