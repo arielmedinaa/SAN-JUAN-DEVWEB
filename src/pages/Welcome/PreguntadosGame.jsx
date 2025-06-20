@@ -1,18 +1,18 @@
 import { useState } from 'react';
-import { Trophy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import CircularWheel from './components/ruleta/CircularWheel';
 import { useContadorPreguntasContext } from '../../context/ContadorContext';
-import { toast } from 'react-toastify';
+import ModalGanador from '../../modals/ModalRespuestaCorrecta';
+import ModalRespuestasIncorrectas from '../../modals/ModalRespuestasIncorrectas';
 
 const PreguntadosGame = () => {
-  const { contador, totalPreguntas, preguntasCorrectas } = useContadorPreguntasContext();
+  const { contador, totalPreguntas, preguntasCorrectas, hasWon, hasLost, setHasWon, setHasLost, reiniciarContador } = useContadorPreguntasContext();
   const navigate = useNavigate();
   const [isSpinning, setIsSpinning] = useState(false);
   const [currentCategory, setCurrentCategory] = useState(null);
   const [score, setScore] = useState(0);
   const [rotation, setRotation] = useState(0);
-  console.log("contador", contador, totalPreguntas);
+  //console.log("contador", contador, totalPreguntas);
 
   const categories = [
     { id: 1, name: 'San Juan', color: '#FFD700', icon: '🏛️', questionSet: 0 },
@@ -25,10 +25,6 @@ const PreguntadosGame = () => {
   ];
 
   const spinWheel = () => {
-    if (contador >= totalPreguntas) {
-      toast.error("Has respondido todas las preguntas. ¡Reinicia el juego!");
-      return;
-    }
     if (isSpinning) return;
 
     setIsSpinning(true);
@@ -62,57 +58,64 @@ const PreguntadosGame = () => {
     setIsSpinning(false);
     localStorage.removeItem("selectedQuestionSet");
     localStorage.removeItem("selectedCategory");
+    setHasWon(false);
+    setHasLost(false);
+    reiniciarContador();
   };
 
   return (
-    <div className="backgroundImage flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-3xl">
-        <div className="flex flex-col items-center text-center space-y-4 mb-8">
-          <h1 className="text-white text-xl">
-            Correctas: {preguntasCorrectas}/{totalPreguntas}
-          </h1>
+    <>
+      <div className="backgroundImage flex items-center justify-center min-h-screen">
+        <div className="w-full max-w-3xl">
+          <div className="flex flex-col items-center text-center space-y-4 mb-8">
+            <h1 className="text-white text-xl">
+              Correctas: {preguntasCorrectas}/{totalPreguntas}
+            </h1>
 
-          <div className="flex flex-col items-center justify-center mb-4">
-            <Trophy className="text-white mb-2" size={10} />
-            <div className="relative inline-block">
-              <h1 className="text-[3rem] font-black uppercase text-center preguntados-title">
-                PREGUNTADOS
-              </h1>
+            <div className="flex flex-col items-center justify-center mb-4">
+              <div className="relative inline-block">
+                <h1 className="text-[3rem] font-black uppercase text-center preguntados-title">
+                  PREGUNTADOS
+                </h1>
+              </div>
+            </div>
+
+            <div className="bg-indigo-400 text-slate-200 rounded-full px-6 py-3 shadow">
+              <h3 className="text-primary-600 text-lg font-semibold">
+                ¡Gira la ruleta para empezar!
+              </h3>
             </div>
           </div>
 
-          <div className="bg-indigo-400 text-slate-200 rounded-full px-6 py-3 shadow">
-            <h3 className="text-primary-600 text-lg font-semibold">
-              ¡Gira la ruleta para empezar!
-            </h3>
-          </div>
-        </div>
-
-        {currentCategory && (
-          <div className="text-center mb-6">
-            <div
-              className="inline-block px-6 py-4 rounded-xl text-white font-bold shadow"
-              style={{ backgroundColor: currentCategory.color }}
-            >
-              <h2 className="text-xl">{currentCategory.icon} {currentCategory.name}</h2>
-              <p className="mt-2 text-sm">¡Preparándote para las preguntas!</p>
+          {currentCategory && (
+            <div className="text-center mb-6">
+              <div
+                className="inline-block px-6 py-4 rounded-xl text-white font-bold shadow"
+                style={{ backgroundColor: currentCategory.color }}
+              >
+                <h2 className="text-xl">{currentCategory.icon} {currentCategory.name}</h2>
+                <p className="mt-2 text-sm">¡Preparándote para las preguntas!</p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        <div className="text-center">
-          <div className="mb-8">
-            <CircularWheel
-              categories={categories}
-              isSpinning={isSpinning}
-              rotation={rotation}
-              onSpin={spinWheel}
-              resetGame={resetGame}
-            />
+          <div className="text-center">
+            <div className="mb-8">
+              <CircularWheel
+                categories={categories}
+                isSpinning={isSpinning}
+                rotation={rotation}
+                onSpin={spinWheel}
+                resetGame={resetGame}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {hasWon && <ModalGanador reset={resetGame}/>}
+      {hasLost && <ModalRespuestasIncorrectas reset={resetGame}/>}
+    </>
 
   );
 };

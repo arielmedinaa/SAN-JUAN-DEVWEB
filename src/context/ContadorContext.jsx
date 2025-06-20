@@ -6,9 +6,11 @@ export const useContadorPreguntas = () => useContext(ContadorPreguntasContext);
 
 export const ContadorPreguntasProvider = ({ children }) => {
     const TOTAL_PREGUNTAS = 5;
-    const [contador, setContador] = useState(0);
-    const [preguntasCorrectas, setPreguntasCorrectas] = useState(0);
+    const [contador, setContador] = useState(5);
+    const [preguntasCorrectas, setPreguntasCorrectas] = useState(5);
     const [preguntasIncorrectas, setPreguntasIncorrectas] = useState(0);
+    const [hasWon, setHasWon] = useState(false);
+    const [hasLost, setHasLost] = useState(false);
 
     const siguientePregunta = () => {
         setContador((prev) => (prev < TOTAL_PREGUNTAS ? prev + 1 : prev));
@@ -22,7 +24,13 @@ export const ContadorPreguntasProvider = ({ children }) => {
         setPreguntasIncorrectas((prev) => prev + 1);
     };
 
-    const reiniciarContador = () => setContador(0);
+    const reiniciarContador = () => {
+        setContador(0);
+        setPreguntasCorrectas(0);
+        setPreguntasIncorrectas(0);
+        setHasWon(false);
+        setHasLost(false);
+    };
 
     return (
         <ContadorPreguntasContext.Provider
@@ -34,7 +42,11 @@ export const ContadorPreguntasProvider = ({ children }) => {
                 preguntasCorrectas,
                 preguntasIncorrectas,
                 registrarRespuestaCorrecta,
-                registrarRespuestaIncorrecta
+                registrarRespuestaIncorrecta,
+                hasWon,
+                setHasWon,
+                hasLost,
+                setHasLost
             }}
         >
             {children}
