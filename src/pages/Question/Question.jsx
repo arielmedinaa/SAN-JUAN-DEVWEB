@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { questions } from "../Welcome/const/Preguntas";
 import { useNavigate } from "react-router-dom";
 import { useContadorPreguntasContext } from "../../context/ContadorContext";
-import { use } from "react";
 
 const Question = () => {
   const {
