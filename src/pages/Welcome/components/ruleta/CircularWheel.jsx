@@ -1,13 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { 
-  FaPencilAlt, 
-  FaFootballBall, 
-  FaLeaf, 
-  FaGlobe, 
-  FaCoins, 
-  FaHatCowboy, 
-  FaBuilding, 
-  FaEye 
+  FaBell, FaComment, FaSmile, FaHeart, FaStar, FaLightbulb,
+  FaFootballBall, FaLeaf, FaGlobe, FaCoins, FaHatCowboy, 
+  FaBuilding, FaEye, FaPencilAlt 
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useContadorPreguntasContext } from '../../../../context/ContadorContext';
@@ -15,111 +10,106 @@ import { useContadorPreguntasContext } from '../../../../context/ContadorContext
 const CircularWheel = () => {
   const { contador, totalPreguntas } = useContadorPreguntasContext();
   const navigate = useNavigate();
+  const [degree, setDegree] = useState(1800);
+  const [clicks, setClicks] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
-  const [rotation, setRotation] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const wheelRef = useRef(null);
+  const spinRef = useRef(null);
 
   const sections = [
-    { icon: FaPencilAlt, color: '#4CAF50', rotation: 0, name: 'San Juan', questionSet: 0 },
-    { icon: FaBuilding, color: '#FFC107', rotation: 45, name: 'Starsoft', questionSet: 1 },
-    { icon: FaFootballBall, color: '#FF9800', rotation: 90, name: 'Historia del Paraguay', questionSet: 2 },
-    { icon: FaLeaf, color: '#F44336', rotation: 135, name: 'Historia General', questionSet: 3 },
-    { icon: FaEye, color: '#E91E63', rotation: 180, name: 'Starsoft', questionSet: 4 },
-    { icon: FaHatCowboy, color: '#9C27B0', rotation: 225, name: 'Starsoft', questionSet: 5 },
-    { icon: FaCoins, color: '#673AB7', rotation: 270, name: 'San Juan', questionSet: 6 },
-    { icon: FaGlobe, color: '#2196F3', rotation: 315, name: 'Historia del Paraguay', questionSet: 7 }
+    { icon: FaBell, color: '#16a085', name: 'San Juan', questionSet: 0 },
+    { icon: FaComment, color: '#2980b9', name: 'Starsoft', questionSet: 1 },
+    { icon: FaSmile, color: '#34495e', name: 'Historia del Paraguay', questionSet: 2 },
+    { icon: FaHeart, color: '#f39c12', name: 'Historia General', questionSet: 3 },
+    { icon: FaStar, color: '#d35400', name: 'Starsoft', questionSet: 4 },
+    { icon: FaLightbulb, color: '#c0392b', name: 'San Juan', questionSet: 5 }
   ];
 
   const spinWheel = () => {
-    if (contador >= totalPreguntas) {
-      alert("Has respondido todas las preguntas. ¡Reinicia el juego!");
-      return;
-    }
     if (isSpinning) return;
     
     setIsSpinning(true);
-    const spins = 5 + Math.random() * 5;
-    const finalRotation = rotation + (spins * 360);
-    setRotation(finalRotation);
+    const newClicks = clicks + 1;
+    setClicks(newClicks);
+    const newDegree = degree * newClicks;
+    const extraDegree = Math.floor(Math.random() * 360) + 1;
+    const totalDegree = newDegree + extraDegree;
+    if (wheelRef.current) {
+      wheelRef.current.style.transform = `rotate(${totalDegree}deg)`;
+    }
+    
+    let tiltCount = 0;
+    const maxTilts = 30;
+    const tiltInterval = setInterval(() => {
+      if (spinRef.current && tiltCount < maxTilts) {
+        spinRef.current.classList.add('spin-tilt');
+        setTimeout(() => {
+          if (spinRef.current) {
+            spinRef.current.classList.remove('spin-tilt');
+          }
+        }, 100);
+        tiltCount++;
+      } else {
+        clearInterval(tiltInterval);
+      }
+    }, 200);
     
     setTimeout(() => {
+      clearInterval(tiltInterval);
       setIsSpinning(false);
-      const normalizedRotation = finalRotation % 360;
-      const sectionAngle = 360 / sections.length;
-      const adjustedRotation = (360 - normalizedRotation + (sectionAngle / 2)) % 360;
-      const categoryIndex = Math.floor(adjustedRotation / sectionAngle);
-      const selected = sections[categoryIndex];
-      localStorage.setItem('selectedQuestionSet', selected.questionSet.toString());
-      localStorage.setItem('selectedCategory', selected.name);
+      const normalizedDegree = totalDegree % 360;
+      const sectionAngle = 60;
+      const selectedIndex = Math.floor((360 - normalizedDegree + 30) / sectionAngle) % 6;
+      const selected = sections[selectedIndex];
       
       setSelectedCategory(selected);
-      setTimeout(() => {
-        navigate('/questions', {
-          state: { 
-            selectedQuestionSet: selected.questionSet,
-            selectedCategory: selected.name 
-          }
-        });
-      }, 1500);
-    }, 3000);
+      localStorage.setItem('selectedQuestionSet', selected.questionSet.toString());
+      localStorage.setItem('selectedCategory', selected.name);
+      navigate('/questions', {
+        state: { 
+          selectedQuestionSet: selected.questionSet,
+          selectedCategory: selected.name 
+        }
+      });
+      
+    }, 6000);
   };
 
   return (
-    <div className="wheelContainer">
-      <div className="wheelWrapper">
-        {selectedCategory && (
-          <div 
-            className="categoryDisplay"
-            style={{ backgroundColor: selectedCategory.color }}
-          >
-            ¡{selectedCategory.name} seleccionado!
-          </div>
-        )}
-
-        <div className="arrow" />
-
-        <div 
-          className={`wheel ${isSpinning ? 'spinning' : ''}`}
-          style={{ 
-            transform: `rotate(${rotation}deg)`,
-            transition: isSpinning ? 'transform 3s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'
-          }}
-        >
-          {sections.map((section, index) => {
-            const IconComponent = section.icon;
-            return (
-              <div 
-                key={index} 
-                className="wheelSection"
-                style={{ transform: `rotate(${section.rotation}deg)` }}
-              >
+    <div className="fortune-wheel-container">
+      <div className="wheel-wrapper">
+        <div className="fortune-wheel">
+          <div className="wheel-border"></div>
+          
+          <div className="fortune-inner-wheel" ref={wheelRef}>
+            {sections.map((section, index) => {
+              const IconComponent = section.icon;
+              return (
                 <div 
-                  className="sectionBackground"
-                  style={{ backgroundColor: section.color }}
-                />
-                <div 
-                  className="iconContainer"
-                  style={{
-                    transform: `translate(-50%, -50%) rotate(-${section.rotation}deg) rotate(22.5deg)`
-                  }}
+                  key={index} 
+                  className={`fortune-section section-${index + 1}`}
+                  style={{ borderColor: `${section.color} transparent` }}
                 >
-                  <IconComponent className="sectionIcon" />
-                  <div className="sectionName">
-                    {section.name}
+                  <div className="fortune-section-icon">
+                    <IconComponent size={36} />
                   </div>
                 </div>
-              </div>
-            );
-          })}
-
+              );
+            })}
+          </div>
+          <div className="spin-arrow"></div>
           <div 
-            className="wheelCenter"
+            className={`fortune-spin-button ${isSpinning ? 'spinning' : ''}`}
+            ref={spinRef}
             onClick={spinWheel}
           >
-            <span className="centerText">
-              {isSpinning ? 'GIRANDO...' : 'GIRAR'}
+            <div className="inner-spin"></div>
+            <span className="spin-text">
+              {isSpinning ? 'GIRANDO...' : 'SPIN'}
             </span>
           </div>
+          <div className="wheel-shine"></div>
         </div>
       </div>
     </div>

@@ -1,12 +1,11 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Trophy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import CircularWheel from './components/ruleta/CircularWheel';
-import PreguntadosImg from "../../assets/preguntados.png"
 import { useContadorPreguntasContext } from '../../context/ContadorContext';
 
 const PreguntadosGame = () => {
-  const { contador, totalPreguntas, preguntasCorrectas, preguntasIncorrectas } = useContadorPreguntasContext();
+  const { contador, totalPreguntas, preguntasCorrectas } = useContadorPreguntasContext();
   const navigate = useNavigate();
   const [isSpinning, setIsSpinning] = useState(false);
   const [currentCategory, setCurrentCategory] = useState(null);
@@ -22,11 +21,6 @@ const PreguntadosGame = () => {
     { id: 5, name: 'Starsoft', color: '#1E90FF', icon: '⚽', questionSet: 4 },
     { id: 6, name: 'Starsoft', color: '#FF1493', icon: '💻', questionSet: 5 },
     { id: 7, name: 'San Juan', color: '#FF1493', icon: '💻', questionSet: 5 }
-
-    // "tipo San Juan 1",
-    // "tipo Starsoft",
-    // "Historia del Paraguay",
-    // "Historia General",
   ];
 
 
@@ -36,19 +30,19 @@ const PreguntadosGame = () => {
       return;
     }
     if (isSpinning) return;
-    
+
     setIsSpinning(true);
     const spins = 5 + Math.random() * 5;
     const finalRotation = rotation + (spins * 360);
     setRotation(finalRotation);
-    
+
     setTimeout(() => {
       setIsSpinning(false);
       const normalizedRotation = finalRotation % 360;
       const sectionAngle = 360 / categories.length;
       const categoryIndex = Math.floor(normalizedRotation / sectionAngle);
       const selectedCategory = categories[categoryIndex];
-      
+
       setCurrentCategory(selectedCategory);
       setTimeout(() => {
         localStorage.setItem('selectedQuestionSet', selectedCategory.questionSet.toString());
@@ -68,48 +62,54 @@ const PreguntadosGame = () => {
   };
 
   return (
-    <div className="container-fluid min-vh-100 bg-gradient-to-br from-blue-400 to-purple-600 p-4">
-      <div className="row justify-content-center">
-        <div className="col-12 col-md-8 col-lg-6">
-          <div className="flex text-center justify-content-center align-items-center flex-column mb-4">
-            <h1 className='color-green'>Correctas: {preguntasCorrectas}/{totalPreguntas}</h1>
-            <h1 className="text-white fw-bold mb-3" style={{fontSize: '2.5rem'}}>
-              <Trophy className="me-2" size={40} />
-              <img style={{ width: '1080px', height: '200px' }} src={PreguntadosImg} alt="preguntadosImg" />
-            </h1>
-            <div className="bg-white rounded-pill px-4 py-2 d-inline-block">
-              <h3 className="mb-0 text-primary">
-                ¡Gira la ruleta para empezar!
-              </h3>
+    <div className="backgroundImage flex items-center justify-center min-h-screen">
+      <div className="w-full max-w-3xl">
+        <div className="flex flex-col items-center text-center space-y-4 mb-8">
+          <h1 className="text-white text-xl">
+            Correctas: {preguntasCorrectas}/{totalPreguntas}
+          </h1>
+
+          <div className="flex flex-col items-center justify-center mb-4">
+            <Trophy className="text-white mb-2" size={10} />
+            <div className="relative inline-block">
+              <h1 className="text-[3rem] font-black uppercase text-center preguntados-title">
+                PREGUNTADOS
+              </h1>
             </div>
           </div>
-          {currentCategory && (
-            <div className="text-center">
-              <div 
-                className="d-inline-block px-4 py-3 rounded-3 text-white fw-bold"
-                style={{ backgroundColor: currentCategory.color }}
-              >
-                <h2 className="mb-0">
-                  {currentCategory.icon} {currentCategory.name}
-                </h2>
-                <p className="mb-0 mt-2">¡Preparándote para las preguntas!</p>
-              </div>
-            </div>
-          )}
 
-          <div className="text-center">
-            <div className="mb-4">
-              <CircularWheel
-                categories={categories}
-                isSpinning={isSpinning}
-                rotation={rotation}
-                onSpin={spinWheel}
-              />
+          <div className="bg-indigo-400 text-slate-200 rounded-full px-6 py-3 shadow">
+            <h3 className="text-primary-600 text-lg font-semibold">
+              ¡Gira la ruleta para empezar!
+            </h3>
+          </div>
+        </div>
+
+        {currentCategory && (
+          <div className="text-center mb-6">
+            <div
+              className="inline-block px-6 py-4 rounded-xl text-white font-bold shadow"
+              style={{ backgroundColor: currentCategory.color }}
+            >
+              <h2 className="text-xl">{currentCategory.icon} {currentCategory.name}</h2>
+              <p className="mt-2 text-sm">¡Preparándote para las preguntas!</p>
             </div>
+          </div>
+        )}
+
+        <div className="text-center">
+          <div className="mb-8">
+            <CircularWheel
+              categories={categories}
+              isSpinning={isSpinning}
+              rotation={rotation}
+              onSpin={spinWheel}
+            />
           </div>
         </div>
       </div>
     </div>
+
   );
 };
 
