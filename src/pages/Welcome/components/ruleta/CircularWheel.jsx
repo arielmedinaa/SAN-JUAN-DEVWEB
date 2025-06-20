@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { 
   FaBell, FaComment, FaSmile, FaHeart, FaStar, FaLightbulb
 } from 'react-icons/fa';
@@ -6,12 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { useContadorPreguntasContext } from '../../../../context/ContadorContext';
 
 const CircularWheel = () => {
-  const { contador, totalPreguntas, setHasWon, setHasLost, preguntasCorrectas } = useContadorPreguntasContext();
+  const { contador, totalPreguntas } = useContadorPreguntasContext();
   const navigate = useNavigate();
   const [degree, setDegree] = useState(1800);
   const [clicks, setClicks] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [correctAsnwer, setCorrectAnswer] = useState(0);
   const wheelRef = useRef(null);
   const spinRef = useRef(null);
 
@@ -25,15 +26,17 @@ const CircularWheel = () => {
   ];
 
   const spinWheel = () => {
-    if (contador >= totalPreguntas) {
-      if(preguntasCorrectas >= totalPreguntas) {
-        setHasWon(true);
-        return;
-      } else {
-        setHasLost(true);
-      }
-      return;
-    }
+    setCorrectAnswer((prev) => prev + 1);
+    //console.log("first", contador, totalPreguntas);
+    // if (contador > 4) {
+    //   // if(preguntasCorrectas >= totalPreguntas) {
+    //   //   setHasWon(true);
+    //   //   return;
+    //   // } else {
+    //   //   setHasLost(true);
+    //   // }
+    //   return;
+    // }
 
 
     if (isSpinning) return;
@@ -84,6 +87,13 @@ const CircularWheel = () => {
       
     }, 6000);
   };
+
+  useEffect(() => {
+    console.log("first", correctAsnwer);
+    if (correctAsnwer >= 5) {
+      return;
+    }
+  }, [correctAsnwer]);
 
   return (
     <div className="fortune-wheel-container">

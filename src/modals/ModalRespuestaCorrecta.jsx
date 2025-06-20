@@ -17,7 +17,7 @@ const ModalGanador = ({ reset }) => {
       
       <div className="fixed inset-0 z-[9999] bg-black bg-opacity-60 flex items-center justify-center">
         <div className="bg-white rounded-2xl p-8 shadow-lg max-w-md w-full text-center">
-          <h2 className="text-4xl font-extrabold text-green-600 mb-4">¡Ganaste! 🎉</h2>
+          <h2 className="text-4xl font-extrabold text-green-600 mb-4">¡Ganando Broooo! 🎉</h2>
           <p className="text-lg text-gray-700 mb-6">
             Has respondido correctamente todas las preguntas. ¡Masivo Brooo. Denle su premio 😒!
           </p>

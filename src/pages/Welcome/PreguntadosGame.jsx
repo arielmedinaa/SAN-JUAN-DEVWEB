@@ -1,12 +1,21 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import CircularWheel from './components/ruleta/CircularWheel';
-import { useContadorPreguntasContext } from '../../context/ContadorContext';
-import ModalGanador from '../../modals/ModalRespuestaCorrecta';
-import ModalRespuestasIncorrectas from '../../modals/ModalRespuestasIncorrectas';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import CircularWheel from "./components/ruleta/CircularWheel";
+import { useContadorPreguntasContext } from "../../context/ContadorContext";
+import ModalGanador from "../../modals/ModalRespuestaCorrecta";
+import ModalRespuestasIncorrectas from "../../modals/ModalRespuestasIncorrectas";
 
 const PreguntadosGame = () => {
-  const { contador, totalPreguntas, preguntasCorrectas, hasWon, hasLost, setHasWon, setHasLost, reiniciarContador } = useContadorPreguntasContext();
+  const {
+    contador,
+    totalPreguntas,
+    preguntasCorrectas,
+    hasWon,
+    hasLost,
+    setHasWon,
+    setHasLost,
+    reiniciarContador,
+  } = useContadorPreguntasContext();
   const navigate = useNavigate();
   const [isSpinning, setIsSpinning] = useState(false);
   const [currentCategory, setCurrentCategory] = useState(null);
@@ -15,13 +24,25 @@ const PreguntadosGame = () => {
   //console.log("contador", contador, totalPreguntas);
 
   const categories = [
-    { id: 1, name: 'San Juan', color: '#FFD700', icon: '🏛️', questionSet: 0 },
-    { id: 2, name: 'Starsoft', color: '#32CD32', icon: '🌍', questionSet: 1 },
-    { id: 3, name: 'Historia del Paraguay', color: '#FF6347', icon: '🧪', questionSet: 2 },
-    { id: 4, name: 'Historia General', color: '#9370DB', icon: '📚', questionSet: 3 },
-    { id: 5, name: 'Starsoft', color: '#1E90FF', icon: '⚽', questionSet: 4 },
-    { id: 6, name: 'Starsoft', color: '#FF1493', icon: '💻', questionSet: 5 },
-    { id: 7, name: 'San Juan', color: '#FF1493', icon: '💻', questionSet: 5 }
+    { id: 1, name: "San Juan", color: "#FFD700", icon: "🏛️", questionSet: 0 },
+    { id: 2, name: "Starsoft", color: "#32CD32", icon: "🌍", questionSet: 1 },
+    {
+      id: 3,
+      name: "Historia del Paraguay",
+      color: "#FF6347",
+      icon: "🧪",
+      questionSet: 2,
+    },
+    {
+      id: 4,
+      name: "Historia General",
+      color: "#9370DB",
+      icon: "📚",
+      questionSet: 3,
+    },
+    { id: 5, name: "Starsoft", color: "#1E90FF", icon: "⚽", questionSet: 4 },
+    { id: 6, name: "Starsoft", color: "#FF1493", icon: "💻", questionSet: 5 },
+    { id: 7, name: "San Juan", color: "#FF1493", icon: "💻", questionSet: 5 },
   ];
 
   const spinWheel = () => {
@@ -93,8 +114,12 @@ const PreguntadosGame = () => {
                 className="inline-block px-6 py-4 rounded-xl text-white font-bold shadow"
                 style={{ backgroundColor: currentCategory.color }}
               >
-                <h2 className="text-xl">{currentCategory.icon} {currentCategory.name}</h2>
-                <p className="mt-2 text-sm">¡Preparándote para las preguntas!</p>
+                <h2 className="text-xl">
+                  {currentCategory.icon} {currentCategory.name}
+                </h2>
+                <p className="mt-2 text-sm">
+                  ¡Preparándote para las preguntas!
+                </p>
               </div>
             </div>
           )}
@@ -113,10 +138,9 @@ const PreguntadosGame = () => {
         </div>
       </div>
 
-      {hasWon && <ModalGanador reset={resetGame}/>}
-      {hasLost && <ModalRespuestasIncorrectas reset={resetGame}/>}
+      {hasWon && <ModalGanador reset={resetGame} />}
+      {hasLost && <ModalRespuestasIncorrectas reset={resetGame} />}
     </>
-
   );
 };
 
