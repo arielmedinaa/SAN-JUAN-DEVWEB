@@ -43,7 +43,7 @@ const Question = () => {
   const handleQuestions = (ch, index) => {
     if (respondido) return;
 
-    setRespondido(true); 
+    setRespondido(true);
 
     if (ch === pregunta.answer) {
       registrarRespuestaCorrecta();
@@ -60,8 +60,13 @@ const Question = () => {
     }, 1000);
   };
   useEffect(() => {
-    if (progreso >= 100 && pregunta) {
+    if (progreso >= 100) {
       siguientePregunta();
+      if (contador === 4 && preguntasCorrectas >= 3) {
+        setHasWon(true);
+      } else if (preguntasCorrectas < totalPreguntas && contador === 4) {
+        setHasLost(true);
+      }
       navigate("/");
     }
   }, [progreso]);

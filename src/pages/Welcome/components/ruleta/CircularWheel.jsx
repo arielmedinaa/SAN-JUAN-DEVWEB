@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import {
   FaBell,
   FaComment,
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useContadorPreguntasContext } from "../../../../context/ContadorContext";
 
 const CircularWheel = () => {
-  const { contador, totalPreguntas } = useContadorPreguntasContext();
+  const { contador } = useContadorPreguntasContext();
   const navigate = useNavigate();
   const [degree, setDegree] = useState(1800);
   const [clicks, setClicks] = useState(0);
