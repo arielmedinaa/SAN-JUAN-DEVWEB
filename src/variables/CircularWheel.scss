@@ -13,7 +13,7 @@ $animation-duration: 6s;
 }
 
 @mixin wheel-shadow {
-  box-shadow: rgba(0,0,0,0.2) 0px 0px 10px, rgba(0,0,0,0.05) 0px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px, rgba(0, 0, 0, 0.05) 0px 3px 0px;
 }
 
 .fortune-wheel-container {
@@ -22,7 +22,7 @@ $animation-duration: 6s;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-family: 'Exo 2', sans-serif;
+  font-family: "Exo 2", sans-serif;
   padding: 2rem;
 }
 
@@ -40,10 +40,10 @@ $animation-duration: 6s;
   overflow: hidden;
   border: $wheel-border solid #fff;
   @include wheel-shadow;
-  
+
   .wheel-border {
     position: absolute;
-    border: 4px solid rgba(0,0,0,0.1);
+    border: 4px solid rgba(0, 0, 0, 0.1);
     width: $wheel-size - 8px;
     height: $wheel-size - 8px;
     border-radius: 50%;
@@ -57,7 +57,7 @@ $animation-duration: 6s;
 .fortune-inner-wheel {
   width: 100%;
   height: 100%;
-  transition: all $animation-duration cubic-bezier(0,.99,.44,.99);
+  transition: all $animation-duration cubic-bezier(0, 0.99, 0.44, 0.99);
 }
 
 .fortune-section {
@@ -70,25 +70,38 @@ $animation-duration: 6s;
   left: 50px;
   top: -4px;
   opacity: 1;
-  
-  &.section-1 { transform: rotate(60deg); }
-  &.section-2 { transform: rotate(120deg); }
-  &.section-3 { transform: rotate(180deg); }
-  &.section-4 { transform: rotate(240deg); }
-  &.section-5 { transform: rotate(300deg); }
-  &.section-6 { transform: rotate(360deg); }
+
+  &.section-1 {
+    transform: rotate(60deg);
+  }
+  &.section-2 {
+    transform: rotate(120deg);
+  }
+  &.section-3 {
+    transform: rotate(180deg);
+  }
+  &.section-4 {
+    transform: rotate(240deg);
+  }
+  &.section-5 {
+    transform: rotate(300deg);
+  }
+  &.section-6 {
+    transform: rotate(360deg);
+  }
 }
 
 .fortune-section-icon {
   margin-top: -100px;
-  color: rgba(0,0,0,0.2);
+  color: rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 10000000;
   display: block;
   text-align: center;
   font-size: 36px;
   margin-left: -15px;
-  text-shadow: rgba(255, 255, 255, 0.1) 0px -1px 0px, rgba(0, 0, 0, 0.2) 0px 1px 0px;
+  text-shadow: rgba(255, 255, 255, 0.1) 0px -1px 0px,
+    rgba(0, 0, 0, 0.2) 0px 1px 0px;
 }
 
 .spin-arrow {
@@ -99,9 +112,10 @@ $animation-duration: 6s;
   border-width: 0 20px 28px 20px;
   border-color: transparent transparent #ffffff transparent;
   top: -12px;
-  left: 50%;
+  left: 43%;
   transform: translateX(-50%);
   z-index: 1001;
+  transform: rotate(180deg);
 }
 
 .fortune-spin-button {
@@ -109,25 +123,29 @@ $animation-duration: 6s;
   height: $spin-button-size;
   @include center-absolute;
   border-radius: 50%;
-  box-shadow: rgba(0,0,0,0.1) 0px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 0px;
   z-index: 1000;
   background: #fff;
   cursor: pointer;
   user-select: none;
   display: flex;
   align-items: center;
+  background-image: url("../../public/logoloaderexpert.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   justify-content: center;
-  
+
   &.spinning {
     pointer-events: none;
     cursor: default;
   }
-  
+
   &:active {
     .inner-spin {
-      box-shadow: rgba(0,0,0,0.4) 0px 0px 5px inset;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 5px inset;
     }
-    
+
     .spin-text {
       font-size: 15px;
     }
@@ -136,27 +154,26 @@ $animation-duration: 6s;
 
 // Spin interno
 .inner-spin {
+  display: none;
   width: $inner-spin-size;
   height: $inner-spin-size;
   @include center-absolute;
   border-radius: 50%;
   z-index: 999;
-  box-shadow: 
-    rgba(255,255,255,1) 0px -2px 0px inset, 
-    rgba(255,255,255,1) 0px 2px 0px inset, 
-    rgba(0,0,0,0.4) 0px 0px 5px;
+  box-shadow: rgba(255, 255, 255, 1) 0px -2px 0px inset,
+    rgba(255, 255, 255, 1) 0px 2px 0px inset, rgba(0, 0, 0, 0.4) 0px 0px 5px;
   background: radial-gradient(
-    ellipse at center, 
-    rgba(255,255,255,1) 0%, 
-    rgba(234,234,234,1) 100%
+    ellipse at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(234, 234, 234, 1) 100%
   );
 }
 
 // Texto del botón
 .spin-text {
-  color: #CCC;
+  color: #ccc;
   font-weight: bold;
-  text-shadow: 0 2px 0 #fff, 0 -2px 0 rgba(0,0,0,0.3);
+  text-shadow: 0 2px 0 #fff, 0 -2px 0 rgba(0, 0, 0, 0.3);
   z-index: 100000;
   position: relative;
   font-size: 14px;
@@ -171,11 +188,11 @@ $animation-duration: 6s;
   top: 0;
   left: 0;
   background: radial-gradient(
-    ellipse at center, 
-    rgba(255,255,255,1) 0%, 
-    rgba(255,255,255,0.99) 1%, 
-    rgba(255,255,255,0.91) 9%, 
-    rgba(255,255,255,0) 100%
+    ellipse at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.99) 1%,
+    rgba(255, 255, 255, 0.91) 9%,
+    rgba(255, 255, 255, 0) 100%
   );
   opacity: 0.1;
   pointer-events: none;
@@ -183,11 +200,12 @@ $animation-duration: 6s;
 
 // Animación de inclinación
 @keyframes spin-tilt {
-  0%, 100% { 
-    transform: translate(-50%, -50%) rotate(0deg); 
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-  50% { 
-    transform: translate(-50%, -50%) rotate(7deg); 
+  50% {
+    transform: translate(-50%, -50%) rotate(7deg);
   }
 }
 
@@ -204,12 +222,12 @@ $animation-duration: 6s;
   color: white;
   font-weight: bold;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
+
   .category-name {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .category-details {
     font-size: 0.9rem;
     opacity: 0.9;
@@ -221,24 +239,25 @@ $animation-duration: 6s;
   margin-top: 2rem;
   text-align: center;
   color: #666;
-  
+
   p {
     margin: 0.5rem 0;
   }
-  
+
   .spinning-text {
-    color: #2196F3;
+    color: #2196f3;
     font-weight: bold;
     animation: pulse 1s infinite;
   }
 }
 
 @keyframes pulse {
-  0%, 100% { 
-    opacity: 1; 
+  0%,
+  100% {
+    opacity: 1;
   }
-  50% { 
-    opacity: 0.5; 
+  50% {
+    opacity: 0.5;
   }
 }
 
@@ -246,19 +265,19 @@ $animation-duration: 6s;
   .fortune-wheel-container {
     padding: 1rem;
   }
-  
+
   .wheel-wrapper {
     margin: 20px auto 0;
   }
-  
+
   .category-display {
     margin-top: 1.5rem;
     padding: 0.8rem 1.5rem;
-    
+
     .category-name {
       font-size: 1rem;
     }
-    
+
     .category-details {
       font-size: 0.8rem;
     }

@@ -24,7 +24,6 @@ const PreguntadosGame = () => {
     { id: 7, name: 'San Juan', color: '#FF1493', icon: '💻', questionSet: 5 }
   ];
 
-
   const spinWheel = () => {
     if (contador >= totalPreguntas) {
       toast.error("Has respondido todas las preguntas. ¡Reinicia el juego!");
@@ -34,7 +33,7 @@ const PreguntadosGame = () => {
 
     setIsSpinning(true);
     const spins = 5 + Math.random() * 5;
-    const finalRotation = rotation + (spins * 360);
+    const finalRotation = rotation + spins * 360;
     setRotation(finalRotation);
 
     setTimeout(() => {
@@ -46,9 +45,12 @@ const PreguntadosGame = () => {
 
       setCurrentCategory(selectedCategory);
       setTimeout(() => {
-        localStorage.setItem('selectedQuestionSet', selectedCategory.questionSet.toString());
-        localStorage.setItem('selectedCategory', selectedCategory.name);
-        navigate('/questions');
+        localStorage.setItem(
+          "selectedQuestionSet",
+          selectedCategory.questionSet.toString()
+        );
+        localStorage.setItem("selectedCategory", selectedCategory.name);
+        navigate("/questions");
       }, 1500);
     }, 3000);
   };
@@ -58,8 +60,8 @@ const PreguntadosGame = () => {
     setRotation(0);
     setCurrentCategory(null);
     setIsSpinning(false);
-    localStorage.removeItem('selectedQuestionSet');
-    localStorage.removeItem('selectedCategory');
+    localStorage.removeItem("selectedQuestionSet");
+    localStorage.removeItem("selectedCategory");
   };
 
   return (

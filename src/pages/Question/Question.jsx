@@ -7,7 +7,6 @@ const Question = () => {
   const {
     siguientePregunta,
     registrarRespuestaCorrecta,
-    registrarRespuestaIncorrecta,
   } = useContadorPreguntasContext();
   const [clickedIndex, setClickedIndex] = useState(null);
   const [pregunta, setPregunta] = useState(null);

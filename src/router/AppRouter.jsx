@@ -6,6 +6,7 @@ import { ContadorPreguntasProvider } from "../context/ContadorContext";
 import "../index.css"; // Importing the main CSS file
 
 const AppRouter = () => (
+    
   <HashRouter>
     <ContadorPreguntasProvider>
       <Routes>

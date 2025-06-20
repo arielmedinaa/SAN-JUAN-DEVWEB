@@ -112,7 +112,6 @@ const CircularWheel = ({ resetGame }) => {
           >
             <div className="inner-spin"></div>
             <span className="spin-text">
-              {isSpinning ? 'GIRANDO...' : 'SPIN'}
             </span>
           </div>
           <div className="wheel-shine"></div>
