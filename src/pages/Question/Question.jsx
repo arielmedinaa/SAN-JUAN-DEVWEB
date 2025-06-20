@@ -37,7 +37,7 @@ const Question = () => {
         }
         return prev + 2;
       });
-    }, 120);
+    }, 150);
     return () => clearInterval(interval);
   }, [categoria]);
 
