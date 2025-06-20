@@ -17,7 +17,7 @@ const Question = () => {
   const [pregunta, setPregunta] = useState(null);
   const [categoria, setcategoria] = useState("");
   const [progreso, setProgreso] = useState(0);
-  const [correctAsnwer, setCorrectAnswer] = useState(0);
+  const [respondido, setRespondido] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     setcategoria(localStorage.getItem("selectedCategory"));
@@ -41,14 +41,20 @@ const Question = () => {
   }, [categoria]);
 
   const handleQuestions = (ch, index) => {
-    //console.log(pregunta.answer);
+    if (respondido) return;
+
+    setRespondido(true); 
+
     if (ch === pregunta.answer) {
       registrarRespuestaCorrecta();
-      setCorrectAnswer(correctAsnwer + 1);
+    }
+    if (contador === 4 && preguntasCorrectas >= 3) {
+      setHasWon(true);
+    } else if (preguntasCorrectas < totalPreguntas && contador === 4) {
+      setHasLost(true);
     }
     setClickedIndex(index);
     siguientePregunta();
-
     setTimeout(() => {
       navigate("/");
     }, 1000);
@@ -59,14 +65,6 @@ const Question = () => {
       navigate("/");
     }
   }, [progreso]);
-
-  useEffect(() => {
-    if (contador === 5 && preguntasCorrectas >= 3) {
-      setHasWon(true);
-    } else if (preguntasCorrectas < totalPreguntas && contador === 5) {
-      setHasLost(true);
-    }
-  }, [correctAsnwer]);
 
   return (
     <div className="body">
