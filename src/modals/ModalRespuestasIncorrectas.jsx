@@ -8,7 +8,7 @@ const ModalRespuestasIncorrectas = ({ reset }) => {
                     ¡Perdiste! 😂🫵🏻
                 </h2>
                 <p className="text-lg text-gray-700 mb-6">
-                    Te has quedado sin respuestas correctas. ¡Intentá de nuevo y superate. Fakin perra débil!
+                    Te has quedado sin respuestas correctas. ¡Intentá de nuevo y superate. Jugas mal hermano!
                 </p>
                 <button
                     className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-full transition duration-300"
