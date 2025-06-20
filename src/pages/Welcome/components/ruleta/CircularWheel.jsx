@@ -40,7 +40,7 @@ const CircularWheel = () => {
   ];
 
   const spinWheel = () => {
-    if (contador > 4) {
+    if (contador >= 5) {
       return;
     }
     setIsSpinning(true);

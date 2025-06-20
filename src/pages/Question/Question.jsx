@@ -7,7 +7,6 @@ import audioPericon from "../../../public/pericon.mp3";
 const Question = () => {
   const {
     contador,
-    totalPreguntas,
     preguntasCorrectas,
     setHasWon,
     setHasLost,
@@ -38,23 +37,26 @@ const Question = () => {
         }
         return prev + 2;
       });
-    }, 265);
+    }, 100);
     return () => clearInterval(interval);
   }, [categoria]);
 
   const handleQuestions = (ch, index) => {
     if (respondido) return;
-
     setRespondido(true);
+    const esCorrecta = ch === pregunta.answer;
+    const nuevasCorrectas = preguntasCorrectas + (esCorrecta ? 1 : 0);
 
-    if (ch === pregunta.answer) {
+    if (esCorrecta) {
       registrarRespuestaCorrecta();
     }
-    if (contador === 4 && preguntasCorrectas >= 3) {
+
+    if (contador === 4 && nuevasCorrectas === 5) {
       setHasWon(true);
-    } else if (preguntasCorrectas < totalPreguntas && contador === 4) {
+    } else if (contador === 4 && nuevasCorrectas < 5) {
       setHasLost(true);
     }
+
     setClickedIndex(index);
     siguientePregunta();
     setTimeout(() => {
@@ -68,17 +70,24 @@ const Question = () => {
       setShuffledChoices(shuffled);
     }
   }, [pregunta]);
+
   useEffect(() => {
-    if (progreso >= 100) {
-      siguientePregunta();
-      if (contador === 4 && preguntasCorrectas >= 3) {
-        setHasWon(true);
-      } else if (preguntasCorrectas < totalPreguntas && contador === 4) {
-        setHasLost(true);
+    if (progreso >= 90 && !respondido) {
+      const esUltimaPregunta = contador === 4;
+      if (esUltimaPregunta) {
+        if (preguntasCorrectas === 5) {
+          setHasWon(true);
+        } else {
+          setHasLost(true);
+        }
       }
-      navigate("/");
+      setRespondido(true);
+      siguientePregunta();
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     }
-  }, [progreso]);
+  }, [progreso, respondido]);
 
   return (
     <div className="body">
