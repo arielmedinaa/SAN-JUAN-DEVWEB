@@ -10,6 +10,7 @@ const PreguntadosGame = () => {
     contador,
     totalPreguntas,
     preguntasCorrectas,
+    preguntasIncorrectas,
     hasWon,
     hasLost,
     setHasWon,
@@ -137,8 +138,8 @@ const PreguntadosGame = () => {
         </div>
       </div>
 
-      {hasWon && <ModalGanador reset={resetGame} />}
-      {hasLost && <ModalRespuestasIncorrectas reset={resetGame} />}
+      {hasWon && <ModalGanador reset={resetGame} totalAnswer={totalPreguntas} correctas={preguntasCorrectas} />}
+      {hasLost && <ModalRespuestasIncorrectas reset={resetGame} incorrectas={preguntasIncorrectas} totalAnswer={totalPreguntas} />}
     </>
   );
 };
