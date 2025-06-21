@@ -33,5 +33,4 @@ Este juego toma esa riqueza cultural y la convierte en un divertido desafío de 
 ### 1. Clona el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/preguntados-san-juan.git
-cd preguntados-san-juan
+git clone https://github.com/arielmedinaa/SAN-JUAN-DEVWEB.git
