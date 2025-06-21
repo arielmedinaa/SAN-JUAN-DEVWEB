@@ -8,7 +8,7 @@ import {
   FaLightbulb,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useContadorPreguntasContext } from "../../../../context/ContadorContext";
+import { useContadorPreguntasContext } from "../../../../core/context/ContadorContext";
 
 const CircularWheel = () => {
   const { contador } = useContadorPreguntasContext();

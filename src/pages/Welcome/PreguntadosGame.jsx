@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CircularWheel from "./components/ruleta/CircularWheel";
-import { useContadorPreguntasContext } from "../../context/ContadorContext";
-import ModalGanador from "../../modals/ModalRespuestaCorrecta";
-import ModalRespuestasIncorrectas from "../../modals/ModalRespuestasIncorrectas";
+import { useContadorPreguntasContext } from "../../core/context/ContadorContext";
+import ModalGanador from "../../core/components/modals/ModalRespuestaCorrecta";
+import ModalRespuestasIncorrectas from "../../core/components/modals/ModalRespuestasIncorrectas";
 
 const PreguntadosGame = () => {
   const {
-    contador,
     totalPreguntas,
     preguntasCorrectas,
     preguntasIncorrectas,
@@ -89,7 +88,6 @@ const PreguntadosGame = () => {
       <div className="backgroundImage flex items-center justify-center min-h-screen">
         <div className="w-full max-w-3xl">
           <div className="flex flex-col items-center text-center space-y-4 mb-8">
-            <p className="text-lg text-white">Contesta correctamente 5 preguntas. Y GANA UN PREMIO!</p>
             <h1 className="text-white text-xl">
               Correctas: {preguntasCorrectas}/{totalPreguntas}
             </h1>
